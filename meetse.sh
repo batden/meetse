@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# EKATSUKI.SH
+# MEETSE.SH
 
-# This Bash script will help you cleanly uninstall E24.
+# This Bash script will help you cleanly uninstall E25.
 
 # See README.md for instructions on how to use this script.
 
-# EKATSUKI.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
+# MEETSE.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
 
 ITA="\e[3m"
 BDR="\e[1;31m"
 OFF="\e[0m"
 
-SCRFLR=$HOME/.esanin
+SCRFLR=$HOME/.esteem
 ICNV=libiconv-1.16
-LWEB=libwebp-1.1.0
-LAVF=0.8.2
+LWEB=libwebp-1.2.0
+LAVF=0.8.4
 
-PROG_MN="efl terminology enlightenment ephoto evisum rage"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express"
 PROG_AT="enventor"
 
 remov_eprog_at() {
@@ -38,7 +38,7 @@ remov_eprog_mn() {
 remov_preq() {
   if [ -d $ESRC/rlottie ]; then
     echo
-    read -t 12 -p "Remove rlottie, libavif, aom, libwebp and libiconv? [Y/n] " answer
+    read -t 12 -p "Remove rlottie, libavif, aom and libwebp? [Y/n] " answer
     case $answer in
     [yY])
       echo
@@ -61,13 +61,6 @@ remov_preq() {
       cd .. && rm -rf $ESRC/$LWEB
       sudo rm -rf /usr/local/bin/cwebp
       sudo rm -rf /usr/local/bin/dwebp
-      echo
-
-      cd $ESRC/$ICNV
-      sudo make uninstall &>/dev/null
-      make maintainer-clean &>/dev/null
-      cd .. && rm -rf $ESRC/$ICNV
-      sudo rm -rf /usr/local/bin/iconv
       echo
       ;;
     [nN])
@@ -95,19 +88,12 @@ remov_preq() {
       sudo rm -rf /usr/local/bin/cwebp
       sudo rm -rf /usr/local/bin/dwebp
       echo
-
-      cd $ESRC/$ICNV
-      sudo make uninstall &>/dev/null
-      make maintainer-clean &>/dev/null
-      cd .. && rm -rf $ESRC/$ICNV
-      sudo rm -rf /usr/local/bin/iconv
-      echo
       ;;
     esac
   fi
 }
 
-uninstall_e24() {
+uninstall_e25() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
 
   clear
@@ -116,11 +102,11 @@ uninstall_e24() {
   cd $HOME
 
   for I in $PROG_AT; do
-    cd $ESRC/e24/$I && remov_eprog_at
+    cd $ESRC/e25/$I && remov_eprog_at
   done
 
   for I in $PROG_MN; do
-    cd $ESRC/e24/$I && remov_eprog_mn
+    cd $ESRC/e25/$I && remov_eprog_mn
   done
 
   cd /etc
@@ -335,7 +321,7 @@ uninstall_e24() {
   sudo rm -rf enlightenment.desktop
 
   cd $HOME
-  rm -rf $ESRC/e24
+  rm -rf $ESRC/e25
   rm -rf $SCRFLR
   rm -rf .e
   rm -rf .elementary
@@ -403,5 +389,5 @@ uninstall_e24() {
 
 printf "\n$BDR%s $OFF%s\n\n" "Wait 3 seconds or hit Ctrl+C to quit..."
 sleep 3
-uninstall_e24
+uninstall_e25
 # Candidates for deletion: Search for 'ekatsuki' in your home folder.
