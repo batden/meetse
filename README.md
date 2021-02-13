@@ -1,36 +1,36 @@
-# ekatsuki
+# meetse
 
-Please use this script to uninstall enlightenment 24 and related apps.
+Please use this script to uninstall enlightenment 25 and related apps.
 
-See also [esanin.sh](https://github.com/batden/esanin) (installation script)
+See also [esteem.sh](https://github.com/batden/esteem) (installation script)
 
 ## Get started
 
 First, clone this repository:
 
 ```bash
-git clone https://github.com/batden/ekatsuki.git .ekatsuki
+git clone https://github.com/batden/meetse.git .meetse
 ```
 
-This creates a new hidden folder named **.ekatsuki** in your home directory.
+This creates a new hidden folder named **.meetse** in your home directory.
 
-Copy the file ekatsuki.sh from this new folder to the download folder.
+Copy the file meetse.sh from this new folder to the download folder.
 
 Now change to the download folder and make the script executable:
 
 ```bash
-chmod +x ekatsuki.sh
+chmod +x meetse.sh
 ```
 
 Then issue the following command:
 
 ```bash
-./ekatsuki.sh
+./meetse.sh
 ```
 
 ### Update local repository
 
-Change to ~/.ekatsuki/ and run:
+Change to ~/.meetse/ and run:
 
 ```bash
 git pull
