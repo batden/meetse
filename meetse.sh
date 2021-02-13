@@ -14,7 +14,6 @@ BDR="\e[1;31m"
 OFF="\e[0m"
 
 SCRFLR=$HOME/.esteem
-ICNV=libiconv-1.16
 LWEB=libwebp-1.2.0
 LAVF=0.8.4
 
@@ -144,6 +143,7 @@ uninstall_e25() {
   sudo rm -rf aom
   sudo rm -rf avif
   sudo rm -rf enlightenment
+  sudo rm -rf express*
   sudo rm -rf webp*
 
   cd /usr/local/lib
@@ -292,6 +292,7 @@ uninstall_e25() {
   sudo rm -rf ethumb*
   sudo rm -rf evas*
   sudo rm -rf exactness*
+  sudo rm -rf express*
   sudo rm -rf rage*
   sudo rm -rf terminology*
   sudo rm -rf wayland-sessions*
@@ -333,6 +334,7 @@ uninstall_e25() {
   rm -rf .config/enventor
   rm -rf .config/ephoto
   rm -rf .config/evisum
+  rm -rf .config/express
   rm -rf .config/rage
   rm -rf .config/terminology
 
@@ -378,7 +380,7 @@ uninstall_e25() {
   find /usr/local/share/locale/*/LC_MESSAGES 2>/dev/null | while read -r I; do
     echo "$I" |
       xargs sudo rm -rf \
-        $(grep -E 'efl|enlightenment|enventor|ephoto|evisum|libiconv|terminology')
+        $(grep -E 'efl|enlightenment|enventor|ephoto|evisum|terminology')
   done
 
   sudo rm -rf /usr/lib/libintl.so
