@@ -2,7 +2,7 @@
 
 # MEETSE.SH
 
-# This Bash script will help you cleanly uninstall E25.
+# This Bash script will help you cleanly uninstall Enlightenment.
 
 # See README.md for instructions on how to use this script.
 
@@ -392,4 +392,4 @@ uninstall_e25() {
 printf "\n$BDR%s $OFF%s\n\n" "Wait 3 seconds or hit Ctrl+C to quit..."
 sleep 3
 uninstall_e25
-# Candidates for deletion: Search for 'ekatsuki' in your home folder.
+# Candidates for deletion: Search for 'meetse' in your home folder.
