@@ -2,7 +2,7 @@
 
 # MEETSE.SH
 
-# This Bash script will help you cleanly uninstall Enlightenment.
+# This Bash script will help you cleanly uninstall Enlightenment and related applications.
 
 # See README.md for instructions on how to use this script.
 
