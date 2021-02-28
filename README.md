@@ -1,6 +1,6 @@
 # meetse
 
-Please use this script to uninstall Enlightenment and related applications.
+**Please use this script to uninstall Enlightenment and related applications.**
 
 See also [esteem.sh](https://github.com/batden/esteem) (installation script)
 
