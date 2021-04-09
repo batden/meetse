@@ -11,7 +11,7 @@ OFF="\e[0m"
 
 SCRFLR=$HOME/.esteem
 LWEB=libwebp-1.2.0
-LAVF=0.9.0
+LAVF=0.8.4
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express"
 PROG_AT="enventor"
