@@ -16,6 +16,10 @@ LAVF=0.8.4
 PROG_MN="efl terminology enlightenment ephoto evisum rage express"
 PROG_AT="enventor"
 
+beep_exit() {
+  paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
+}
+
 remov_eprog_at() {
   for I in $PROG_AT; do
     sudo make uninstall &>/dev/null
@@ -90,7 +94,7 @@ remov_preq() {
 
 uninstall_e25() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
-    printf "\n$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
+    printf "$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
     beep_exit
     exit 1
   fi
