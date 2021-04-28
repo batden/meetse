@@ -89,6 +89,12 @@ remov_preq() {
 }
 
 uninstall_e25() {
+  if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
+    printf "\n$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
+    beep_exit
+    exit 1
+  fi
+
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
 
   clear
