@@ -40,11 +40,9 @@ remov_preq() {
     read -t 12 -p "Remove rlottie, libavif, aom and libwebp? [Y/n] " answer
     case $answer in
     [yY])
-      echo
       cd $ESRC/rlottie
       sudo ninja -C build uninstall &>/dev/null
       cd .. && rm -rf rlottie
-      echo
 
       cd $ESRC/libavif-$LAVF/build
       xargs sudo rm -rf <install_manifest.txt
@@ -66,11 +64,9 @@ remov_preq() {
       printf "\n$ITA%s $OFF%s\n\n" "(do not remove prerequisites... OK)"
       ;;
     *)
-      echo
       cd $ESRC/rlottie
       sudo ninja -C build uninstall &>/dev/null
       cd .. && rm -rf rlottie
-      echo
 
       cd $ESRC/libavif-$LAVF/build
       xargs sudo rm -rf <install_manifest.txt
