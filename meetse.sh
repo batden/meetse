@@ -395,5 +395,5 @@ uninstall_e25() {
 printf "\n$BDR%s $OFF%s\n\n" "Wait 3 seconds or hit Ctrl+C to quit..."
 sleep 3
 uninstall_e25
-printf "\n$BDR%s $OFF%s\n" "Uninstall completed."
+printf "$BDR%s $OFF%s\n" "Uninstall completed."
 # Candidates for deletion: Search for 'meetse' in your home folder.
