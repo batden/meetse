@@ -343,13 +343,30 @@ uninstall_e25() {
 
   remov_preq
 
-  if [ -d $HOME/.cache/ccache ] || [ -d $HOME/.ccache ]; then
+  if [ -d $HOME/.cache/ccache ]; then
     echo
     read -t 12 -p "Remove the ccache folder? [y/N] " answer
     case $answer in
     [yY])
       ccache -C
-      rm -rf $HOME/.cache/ccache || rm -rf $HOME/.ccache
+      rm -rf $HOME/.cache/ccache
+      ;;
+    [nN])
+      printf "\n$ITA%s $OFF%s\n\n" "(do not delete the ccache folder... OK)"
+      ;;
+    *)
+      printf "\n$ITA%s $OFF%s\n\n" "(do not delete the ccache folder... OK)"
+      ;;
+    esac
+  fi
+
+  if [ -d $HOME/.ccache ]; then
+    echo
+    read -t 12 -p "Remove the ccache folder? [y/N] " answer
+    case $answer in
+    [yY])
+      ccache -C
+      rm -rf $HOME/.ccache
       ;;
     [nN])
       printf "\n$ITA%s $OFF%s\n\n" "(do not delete the ccache folder... OK)"
@@ -361,7 +378,6 @@ uninstall_e25() {
   fi
 
   if [ -f $HOME/.bash_aliases ]; then
-    echo
     read -t 12 -p "Remove the bash_aliases file? [Y/n] " answer
     case $answer in
     [yY])
