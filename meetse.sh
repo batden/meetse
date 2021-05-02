@@ -30,7 +30,6 @@ remov_eprog_at() {
 remov_eprog_mn() {
   for I in $PROG_MN; do
     sudo ninja -C build uninstall &>/dev/null
-    rm -rf build &>/dev/null
   done
 }
 
@@ -287,6 +286,7 @@ uninstall_e25() {
   sudo rm -rf embryo*
   sudo rm -rf emotion*
   sudo rm -rf enlightenment*
+  sudo rm -rf entice*
   sudo rm -rf enventor*
   sudo rm -rf evisum*
   sudo rm -rf eo*
@@ -334,6 +334,7 @@ uninstall_e25() {
   rm -rf .cache/ephoto
   rm -rf .cache/evas_gl_common_caches
   rm -rf .cache/rage
+  rm -rf .config/entice
   rm -rf .config/enventor
   rm -rf .config/ephoto
   rm -rf .config/evisum
