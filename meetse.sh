@@ -354,9 +354,11 @@ uninstall_e25() {
       ;;
     [nN])
       printf "\n$ITA%s $OFF%s\n\n" "(do not delete the ccache folder... OK)"
+      echo
       ;;
     *)
       printf "\n$ITA%s $OFF%s\n\n" "(do not delete the ccache folder... OK)"
+      echo
       ;;
     esac
   fi
@@ -371,9 +373,11 @@ uninstall_e25() {
       ;;
     [nN])
       printf "\n$ITA%s $OFF%s\n\n" "(do not delete the ccache folder... OK)"
+      echo
       ;;
     *)
       printf "\n$ITA%s $OFF%s\n\n" "(do not delete the ccache folder... OK)"
+      echo
       ;;
     esac
   fi
