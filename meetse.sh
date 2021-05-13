@@ -302,6 +302,7 @@ uninstall_e25() {
 
   cd /usr/local/share/applications
   sudo sed -i '/enlightenment_filemanager/d' mimeinfo.cache
+  sudo sed -i '/entice/d' mimeinfo.cache
   sudo sed -i '/ephoto/d' mimeinfo.cache
   sudo sed -i '/rage/d' mimeinfo.cache
   sudo rm -rf terminology.desktop
