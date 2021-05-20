@@ -13,7 +13,7 @@ SCRFLR=$HOME/.esteem
 LWEB=libwebp-1.2.0
 LAVF=0.8.4
 
-PROG_MN="efl terminology enlightenment ephoto evisum rage express entice"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire entice"
 PROG_AT="enventor"
 
 beep_exit() {
@@ -299,6 +299,7 @@ uninstall_e25() {
 
   cd /usr/local/share/applications
   sudo sed -i '/enlightenment_filemanager/d' mimeinfo.cache
+  sudo sed -i '/ecrire/d' mimeinfo.cache
   sudo sed -i '/entice/d' mimeinfo.cache
   sudo sed -i '/ephoto/d' mimeinfo.cache
   sudo sed -i '/rage/d' mimeinfo.cache
@@ -332,6 +333,7 @@ uninstall_e25() {
   rm -rf .cache/ephoto
   rm -rf .cache/evas_gl_common_caches
   rm -rf .cache/rage
+  rm -rf .config/ecrire.cfg
   rm -rf .config/entice
   rm -rf .config/enventor
   rm -rf .config/ephoto
@@ -402,7 +404,7 @@ uninstall_e25() {
   find /usr/local/share/locale/*/LC_MESSAGES 2>/dev/null | while read -r I; do
     echo "$I" |
       xargs sudo rm -rf \
-        $(grep -E 'efl|enlightenment|enventor|ephoto|evisum|terminology')
+        $(grep -E 'efl|enlightenment|enventor|ephoto|evisum|terminology|ecrire')
   done
 
   sudo rm -rf /usr/lib/libintl.so
