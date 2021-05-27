@@ -274,6 +274,7 @@ uninstall_e25() {
   cd /usr/local/share
   sudo rm -rf dbus*
   sudo rm -rf ecore*
+  sudo rm -rf ecrire*
   sudo rm -rf edje*
   sudo rm -rf eeze*
   sudo rm -rf efl*
