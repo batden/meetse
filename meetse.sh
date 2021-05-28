@@ -123,6 +123,7 @@ uninstall_e25() {
   sudo rm -rf evas*
 
   cd /usr/local/bin
+  sudo rm -rf e_paledit*
   sudo rm -rf eina*
   sudo rm -rf efl*
   sudo rm -rf elua*
@@ -304,6 +305,7 @@ uninstall_e25() {
   sudo sed -i '/entice/d' mimeinfo.cache
   sudo sed -i '/ephoto/d' mimeinfo.cache
   sudo sed -i '/rage/d' mimeinfo.cache
+  sudo rm -rf e_paledit.desktop
   sudo rm -rf terminology.desktop
 
   cd /usr/local/share/icons
