@@ -2,7 +2,7 @@
 
 **Please use this script to uninstall Enlightenment and related applications.**
 
-See also [esteem.sh](https://github.com/batden/esteem) (installation script)
+*See also [esteem.sh](https://github.com/batden/esteem)*
 
 ## Get started
 
