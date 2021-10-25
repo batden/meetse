@@ -10,7 +10,7 @@ BDR="\e[1;31m"
 OFF="\e[0m"
 
 SCRFLR=$HOME/.esteem
-LWEB=libwebp-1.2.0
+LWEB=libwebp-1.2.1
 LAVF=0.9.1
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire entice"
