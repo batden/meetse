@@ -10,20 +10,14 @@ BDR="\e[1;31m"
 OFF="\e[0m"
 
 SCRFLR=$HOME/.esteem
+ESRC=$(cat $HOME/.cache/ebuilds/storepath)
 LWEB=libwebp-1.2.1
 LAVF=0.9.1
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire entice"
-PROG_AT="enventor"
 
 beep_exit() {
   paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
-}
-
-remov_eprog_at() {
-  for I in $PROG_AT; do
-    sudo make uninstall &>/dev/null
-  done
 }
 
 remov_eprog_mn() {
@@ -96,11 +90,16 @@ uninstall_e25() {
   clear
   printf "\n\n$BDR%s $OFF%s\n\n" "* UNINSTALLING ENLIGHTENMENT DESKTOP *"
 
-  cd $HOME
+  if [ -d $ESRC/e25/enventor ]; then
+    cd $ESRC/e25/enventor && sudo make uninstall &>/dev/null
+    cd /usr/local/bin && sudo rm -rf enventor*
+    cd /usr/local/lib && sudo rm -rf enventor*
+    cd /usr/local/lib/x86_64-linux-gnu/pkgconfig && sudo rm -rf enventor*
+    cd /usr/local/share && sudo rm -rf enventor*
+    cd $HOME && rm -rf .config/enventor
+  fi
 
-  for I in $PROG_AT; do
-    cd $ESRC/e25/$I && remov_eprog_at
-  done
+  cd $HOME
 
   for I in $PROG_MN; do
     cd $ESRC/e25/$I && remov_eprog_mn
@@ -127,7 +126,6 @@ uninstall_e25() {
   sudo rm -rf eina*
   sudo rm -rf efl*
   sudo rm -rf elua*
-  sudo rm -rf enventor*
   sudo rm -rf eolian*
   sudo rm -rf emotion*
   sudo rm -rf evas*
@@ -154,7 +152,6 @@ uninstall_e25() {
   sudo rm -rf elementary*
   sudo rm -rf emotion*
   sudo rm -rf enlightenment*
-  sudo rm -rf enventor*
   sudo rm -rf ethumb*
   sudo rm -rf evas*
   sudo rm -rf libecore*
@@ -254,7 +251,6 @@ uninstall_e25() {
   sudo rm -rf emile*
   sudo rm -rf emotion*
   sudo rm -rf enlightenment*
-  sudo rm -rf enventor*
   sudo rm -rf evisum*
   sudo rm -rf eo*
   sudo rm -rf eolian*
@@ -286,7 +282,6 @@ uninstall_e25() {
   sudo rm -rf emotion*
   sudo rm -rf enlightenment*
   sudo rm -rf entice*
-  sudo rm -rf enventor*
   sudo rm -rf evisum*
   sudo rm -rf eo*
   sudo rm -rf eolian*
@@ -338,7 +333,6 @@ uninstall_e25() {
   rm -rf .cache/rage
   rm -rf .config/ecrire.cfg
   rm -rf .config/entice
-  rm -rf .config/enventor
   rm -rf .config/ephoto
   rm -rf .config/evisum
   rm -rf .config/express
@@ -407,7 +401,7 @@ uninstall_e25() {
   find /usr/local/share/locale/*/LC_MESSAGES 2>/dev/null | while read -r I; do
     echo "$I" |
       xargs sudo rm -rf \
-        $(grep -E 'efl|enlightenment|enventor|ephoto|evisum|terminology|ecrire')
+        $(grep -E 'efl|enlightenment|ephoto|evisum|terminology|ecrire|enventor')
   done
 
   sudo rm -rf /usr/lib/libintl.so
