@@ -10,7 +10,6 @@ BDR="\e[1;31m"
 OFF="\e[0m"
 
 SCRFLR=$HOME/.esteem
-ESRC=$(cat $HOME/.cache/ebuilds/storepath)
 LWEB=libwebp-1.2.1
 LAVF=0.9.1
 
