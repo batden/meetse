@@ -321,7 +321,7 @@ uninstall_e25() {
   sudo rm -rf enlightenment.desktop
 
   cd $HOME
-  rm -rf $ESRC/e25
+  sudo rm -rf $ESRC/e25
   rm -rf $SCRFLR
   rm -rf .e
   rm -rf .elementary
