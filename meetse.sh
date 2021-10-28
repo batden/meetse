@@ -92,11 +92,11 @@ uninstall_e25() {
 
   if [ -d $ESRC/e25/enventor ]; then
     cd $ESRC/e25/enventor && sudo make uninstall &>/dev/null
-    cd /usr/local/bin && sudo rm -rf enventor*
-    cd /usr/local/lib && sudo rm -rf enventor*
-    cd /usr/local/lib/x86_64-linux-gnu/pkgconfig && sudo rm -rf enventor*
-    cd /usr/local/share && sudo rm -rf enventor*
-    cd $HOME && rm -rf .config/enventor
+    sudo rm -rf /usr/local/bin/enventor*
+    sudo rm -rf /usr/local/libenventor*
+    sudo rm -rf /usr/local/lib/x86_64-linux-gnu/pkgconfig/enventor*
+    sudo rm -rf /usr/local/share/enventor*
+    rm -rf $HOME/.config/enventor
   fi
 
   cd $HOME
