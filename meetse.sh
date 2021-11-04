@@ -13,7 +13,7 @@ SCRFLR=$HOME/.esteem
 LWEB=libwebp-1.2.1
 LAVF=0.9.1
 
-PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire entice"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor entice"
 
 beep_exit() {
   paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
@@ -89,15 +89,6 @@ uninstall_e25() {
   clear
   printf "\n\n$BDR%s $OFF%s\n\n" "* UNINSTALLING ENLIGHTENMENT DESKTOP *"
 
-  if [ -d $ESRC/e25/enventor ]; then
-    cd $ESRC/e25/enventor && sudo make uninstall &>/dev/null
-    sudo rm -rf /usr/local/bin/enventor*
-    sudo rm -rf /usr/local/libenventor*
-    sudo rm -rf /usr/local/lib/x86_64-linux-gnu/pkgconfig/enventor*
-    sudo rm -rf /usr/local/share/enventor*
-    rm -rf $HOME/.config/enventor
-  fi
-
   cd $HOME
 
   for I in $PROG_MN; do
@@ -125,6 +116,7 @@ uninstall_e25() {
   sudo rm -rf eina*
   sudo rm -rf efl*
   sudo rm -rf elua*
+  sudo rm -rf enventor*
   sudo rm -rf eolian*
   sudo rm -rf emotion*
   sudo rm -rf evas*
@@ -170,6 +162,7 @@ uninstall_e25() {
   sudo rm -rf libembryo*
   sudo rm -rf libemile*
   sudo rm -rf libemotion*
+  sudo rm -rf libenventor*
   sudo rm -rf libeo*
   sudo rm -rf libeolian*
   sudo rm -rf libephysics*
@@ -250,6 +243,7 @@ uninstall_e25() {
   sudo rm -rf emile*
   sudo rm -rf emotion*
   sudo rm -rf enlightenment*
+  sudo rm -rf enventor*
   sudo rm -rf evisum*
   sudo rm -rf eo*
   sudo rm -rf eolian*
@@ -281,6 +275,7 @@ uninstall_e25() {
   sudo rm -rf emotion*
   sudo rm -rf enlightenment*
   sudo rm -rf entice*
+  sudo rm -rf enventor*
   sudo rm -rf evisum*
   sudo rm -rf eo*
   sudo rm -rf eolian*
@@ -332,6 +327,7 @@ uninstall_e25() {
   rm -rf .cache/rage
   rm -rf .config/ecrire.cfg
   rm -rf .config/entice
+  rm -rf .config/enventor
   rm -rf .config/ephoto
   rm -rf .config/evisum
   rm -rf .config/express
