@@ -117,6 +117,7 @@ uninstall_e25() {
   sudo rm -rf efl*
   sudo rm -rf elua*
   sudo rm -rf enventor*
+  sudo rm -rf evisum*
   sudo rm -rf eolian*
   sudo rm -rf emotion*
   sudo rm -rf evas*
