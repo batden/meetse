@@ -320,6 +320,7 @@ uninstall_e25() {
   sudo rm -rf $ESRC/e25
   rm -rf $SCRFLR
   rm -rf .e
+  rm -rf .e-log*
   rm -rf .elementary
   rm -rf .cache/ebuilds
   rm -rf .cache/efreet
