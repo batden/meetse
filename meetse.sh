@@ -441,6 +441,10 @@ strt_afresh() {
 
   cd $ESRC/rlottie
   rm -rf build/
+
+  printf "\n$BLD%s $OFF%s\n\n" "Building rlottie..."
+  # Plain build.
+
   meson -Dexample=false \
     build
   ninja -C build || true
