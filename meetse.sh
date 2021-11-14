@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# This Bash script will help you cleanly uninstall Enlightenment and related applications.
+# This Bash script helps you cleanly uninstall Enlightenment and related applications;
+# or allows you to fix Meson version mismatch errors, without uninstalling everything.
 
 # MEETSE.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
 
 ITA="\e[3m"
 BDR="\e[1;31m"
+BDY="\e[1;33m"
 OFF="\e[0m"
 
 SCRFLR=$HOME/.esteem
@@ -17,6 +19,21 @@ PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire envento
 
 beep_exit() {
   paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
+}
+
+# Hints.
+# 1: Uninstall the whole Enlightenment desktop environment.
+# 2: Delete the Meson build folders and rebuild everything.
+#
+sel_menu() {
+  if [ $INPUT -lt 1 ]; then
+    echo
+    printf "1  $BDR%s $OFF%s\n\n" "Uninstall Enlightenment now"
+    printf "2  $BDY%s $OFF%s\n\n" "Fix Meson errors and rebuild"
+
+    sleep 1 && printf "$ITA%s $OFF%s\n\n" "Or press Ctrl+C to quit."
+    read INPUT
+  fi
 }
 
 remov_eprog_mn() {
@@ -404,11 +421,70 @@ uninstall_e25() {
   sudo rm -rf /usr/lib/libintl.so
   sudo ldconfig
   sudo updatedb
-  echo
+
+  printf "\n$BDR%s $OFF%s\n" "Uninstall completed."
+  # Candidates for deletion: Search for 'meetse' in your home folder.
 }
 
-printf "\n$BDR%s $OFF%s\n\n" "Wait 3 seconds or hit Ctrl+C to quit..."
-sleep 3
-uninstall_e25
-printf "$BDR%s $OFF%s\n" "Uninstall completed."
-# Candidates for deletion: Search for 'meetse' in your home folder.
+strt_afresh() {
+  if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
+    printf "$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
+    beep_exit
+    exit 1
+  fi
+
+  ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+
+  clear
+  printf "\n\n$BDY%s $OFF%s\n\n" "* FIXING MESON ERRORS *"
+  sleep 2
+
+  cd $HOME
+
+  for I in $PROG_MN; do
+    cd $ESRC/e25/$I
+    rm -rf build/
+
+    printf "\n$BLD%s $OFF%s\n\n" "Building $I..."
+    # Plain build.
+
+    case $I in
+    efl)
+      meson -Dbuild-examples=false -Dbuild-tests=false \
+        -Dlua-interpreter=lua -Dbindings= \
+        build
+      ninja -C build || true
+      ;;
+    *)
+      meson build
+      ninja -C build || true
+      ;;
+    esac
+
+    $SNIN || true
+    sudo ldconfig
+  done
+
+  sudo updatedb
+
+  printf "\n$BDY%s $OFF%s\n" "Done."
+}
+
+main() {
+  trap '{ printf "\n$BDR%s $OFF%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' INT
+
+  INPUT=0
+  printf "\n$BLD%s $OFF%s\n" "Please enter the number of your choice:"
+  sel_menu
+
+  if [ $INPUT == 1 ]; then
+    uninstall_e25
+  elif [ $INPUT == 2 ]; then
+    strt_afresh
+  else
+    beep_exit
+    exit 1
+  fi
+}
+
+main
