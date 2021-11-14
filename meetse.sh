@@ -24,7 +24,7 @@ beep_exit() {
 
 # Hints.
 # 1: Uninstall the whole Enlightenment desktop environment.
-# 2: Delete the Meson build folders and build anew everything that needs to be rebuilt.
+# 2: Delete the Meson builddirs and build anew everything that needs to be rebuilt.
 #
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
