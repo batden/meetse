@@ -37,12 +37,6 @@ sel_menu() {
   fi
 }
 
-remov_eprog_mn() {
-  for I in $PROG_MN; do
-    sudo ninja -C build uninstall &>/dev/null
-  done
-}
-
 remov_preq() {
   if [ -d $ESRC/rlottie ]; then
     echo
@@ -110,7 +104,8 @@ uninstall_e25() {
   cd $HOME
 
   for I in $PROG_MN; do
-    cd $ESRC/e25/$I && remov_eprog_mn
+    cd $ESRC/e25/$I
+    sudo ninja -C build uninstall &>/dev/null
   done
 
   cd /etc
