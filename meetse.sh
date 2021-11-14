@@ -439,6 +439,15 @@ strt_afresh() {
   printf "\n\n$BDY%s $OFF%s\n\n" "* FIXING MESON ERRORS *"
   sleep 2
 
+  cd $ESRC/rlottie
+  rm -rf build/
+  meson -Dexample=false \
+    build
+  ninja -C build || true
+  $SNIN || true
+  sudo ldconfig
+  echo
+
   cd $HOME
 
   for I in $PROG_MN; do
