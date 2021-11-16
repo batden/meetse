@@ -432,14 +432,9 @@ strt_afresh() {
 
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
 
-  mkdir -p $DOCDIR/mbackups
-
   clear
   printf "\n\n$BDY%s $OFF%s\n\n" "* FIXING MESON ERRORS *"
   sleep 2
-
-  mkdir -p $DOCDIR/mbackups/rlottie
-  cp -aR $ESRC/rlottie/build $DOCDIR/mbackups/rlottie
 
   cd $ESRC/rlottie
   rm -rf build
@@ -455,12 +450,6 @@ strt_afresh() {
   echo
 
   cd $HOME
-
-  for I in $PROG_MN; do
-    cd $ESRC/e25/$I
-    mkdir -p $DOCDIR/mbackups/$I
-    cp -aR $ESRC/e25/$I/build $DOCDIR/mbackups/$I
-  done
 
   for I in $PROG_MN; do
     cd $ESRC/e25/$I
