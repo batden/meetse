@@ -12,7 +12,6 @@ BDR="\e[1;31m"
 BDY="\e[1;33m"
 OFF="\e[0m"
 
-DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 LWEB=libwebp-1.2.1
 LAVF=0.9.1
