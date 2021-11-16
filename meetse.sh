@@ -12,6 +12,7 @@ BDR="\e[1;31m"
 BDY="\e[1;33m"
 OFF="\e[0m"
 
+DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 LWEB=libwebp-1.2.1
 LAVF=0.9.1
@@ -431,12 +432,17 @@ strt_afresh() {
 
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
 
+  mkdir -p $DOCDIR/mbackups
+
   clear
   printf "\n\n$BDY%s $OFF%s\n\n" "* FIXING MESON ERRORS *"
   sleep 2
 
+  mkdir -p $DOCDIR/mbackups/rlottie
+  cp -aR $ESRC/rlottie/build $DOCDIR/mbackups/rlottie
+
   cd $ESRC/rlottie
-  rm -rf build/
+  rm -rf build
 
   printf "\n$BLD%s $OFF%s\n\n" "Building rlottie..."
   # Plain build.
@@ -452,7 +458,13 @@ strt_afresh() {
 
   for I in $PROG_MN; do
     cd $ESRC/e25/$I
-    rm -rf build/
+    mkdir -p $DOCDIR/mbackups/$I
+    cp -aR $ESRC/e25/$I/build $DOCDIR/mbackups/$I
+  done
+
+  for I in $PROG_MN; do
+    cd $ESRC/e25/$I
+    rm -rf build
 
     printf "\n$BLD%s $OFF%s\n\n" "Building $I..."
     # Plain build.
@@ -473,8 +485,6 @@ strt_afresh() {
     $SNIN || true
     sudo ldconfig
   done
-
-  sudo updatedb
 
   printf "\n$BDY%s $OFF%s\n" "Done."
 }
