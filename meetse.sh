@@ -25,13 +25,15 @@ beep_exit() {
 
 # Hints.
 # 1: Uninstall the whole Enlightenment desktop environment.
-# 2: Delete the Meson builddirs and build anew everything that needs to be rebuilt.
+# 2: Delete the Meson build folders and build anew everything that needs to be rebuilt.
+# 3: Restore earlier versions of Meson builddirs, if any.
 #
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
     printf "1  $BDR%s $OFF%s\n\n" "Uninstall Enlightenment now"
     printf "2  $BDY%s $OFF%s\n\n" "Fix Meson errors and rebuild"
+    printf "3  $BDY%s $OFF%s\n\n" "Restore Meson builddirs from the backup"
 
     sleep 1 && printf "$ITA%s $OFF%s\n\n" "Or press Ctrl+C to quit."
     read INPUT
