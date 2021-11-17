@@ -12,6 +12,7 @@ BDR="\e[1;31m"
 BDY="\e[1;33m"
 OFF="\e[0m"
 
+DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 LWEB=libwebp-1.2.1
 LAVF=0.9.1
@@ -330,8 +331,6 @@ uninstall_e25() {
   sudo rm -rf enlightenment.desktop
 
   cd $HOME
-  sudo rm -rf $ESRC/e25
-  rm -rf $SCRFLR
   rm -rf .e
   rm -rf .e-log*
   rm -rf .elementary
@@ -416,10 +415,21 @@ uninstall_e25() {
 
   sudo rm -rf /usr/lib/libintl.so
   sudo ldconfig
-  sudo updatedb
 
-  printf "\n$BDR%s $OFF%s\n" "Uninstall completed."
-  # Candidates for deletion: Search for 'meetse' in your home folder.
+  if [ ! -f /usr/local/bin/enlightenment ] || [ ! -d /usr/local/etc/enlightenment ]; then
+    cd $HOME
+    sudo rm -rf $ESRC/e25
+    rm -rf $SCRFLR
+    sudo updatedb
+    printf "\n$BDR%s $OFF%s\n" "Uninstall completed."
+    # Candidates for deletion: Search for 'meetse' in your home folder.
+  else
+    printf "\n$BDR%s %s\n" "OOPS! SOMETHING WENT WRONG."
+    printf "$BDR%s \n" "PLEASE RELAUNCH THIS SCRIPT AND SELECT OPTION 3"
+    printf "$BDR%s $OFF%s\n\n" "THEN RETRY OPTION 1."
+    beep_exit
+    exit 1
+  fi
 }
 
 strt_afresh() {
@@ -477,6 +487,46 @@ strt_afresh() {
   printf "\n$BDY%s $OFF%s\n" "Done."
 }
 
+get_mbkp() {
+  if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
+    printf "$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
+    beep_exit
+    exit 1
+  fi
+
+  ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+
+  clear
+  printf "\n\n$BDY%s $OFF%s\n\n" "* RESTORING MESON BUILDDIRS *"
+  sleep 2
+
+  if [ -d $DOCDIR/mbackups ]; then
+    cd $ESRC/rlottie
+    rm -rf build
+    cd $HOME
+
+    for I in $PROG_MN; do
+      cd $ESRC/e25/$I
+      rm -rf build
+    done
+  else
+    printf "\n\n$BDr%s $OFF%s\n\n" "* NO BACKUP FOUND! *"
+    beep_exit
+    exit 1
+  fi
+
+  if [ -d $DOCDIR/mbackups ]; then
+    cp -aR $DOCDIR/mbackups/rlottie/build -aR $ESRC/rlottie
+
+    for I in $PROG_MN; do
+      cd $ESRC/e25/$I
+      cp -aR $DOCDIR/mbackups/$I/build $ESRC/e25/$I/
+    done
+  fi
+
+  printf "\n$BDY%s $OFF%s\n" "Done."
+}
+
 main() {
   trap '{ printf "\n$BDR%s $OFF%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' INT
 
@@ -488,6 +538,8 @@ main() {
     uninstall_e25
   elif [ $INPUT == 2 ]; then
     strt_afresh
+  elif [ $INPUT == 3 ]; then
+    get_mbkp
   else
     beep_exit
     exit 1
