@@ -427,8 +427,8 @@ uninstall_e25() {
     # Candidates for deletion: Search for 'meetse' in your home folder.
   else
     printf "\n$BDR%s %s\n" "OOPS! SOMETHING WENT WRONG."
-    printf "$BDR%s %\n" "PLEASE RELAUNCH THIS SCRIPT AND SELECT OPTION 3"
-    printf "$BDR%s $OFF%s\n\n" "THEN RETRY OPTION 1."
+    printf "$BDR%s $OFF%s\n" "PLEASE RELAUNCH THIS SCRIPT AND SELECT OPTION 3"
+    printf "$BDY%s $OFF%s\n\n" "THEN RETRY OPTION 1."
     beep_exit
     exit 1
   fi
