@@ -428,7 +428,7 @@ uninstall_e25() {
   else
     printf "\n$BDR%s %s\n" "OOPS! SOMETHING WENT WRONG."
     printf "$BDR%s $OFF%s\n" "PLEASE RELAUNCH THIS SCRIPT AND SELECT OPTION 3"
-    printf "$BDY%s $OFF%s\n\n" "THEN RETRY OPTION 1."
+    printf "$BDY%s $OFF%s\n\n" "RETRY OPTION 1 AFTERWARD."
     beep_exit
     exit 1
   fi
