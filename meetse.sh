@@ -33,7 +33,7 @@ sel_menu() {
     echo
     printf "1  $BDR%s $OFF%s\n\n" "Uninstall Enlightenment now"
     printf "2  $BDY%s $OFF%s\n\n" "Fix Meson errors and rebuild"
-    printf "3  $BDY%s $OFF%s\n\n" "Restore Meson builddirs from the backup"
+    printf "3  $BDY%s $OFF%s\n\n" "Restore Meson builddirs from backup"
 
     sleep 1 && printf "$ITA%s $OFF%s\n\n" "Or press Ctrl+C to quit."
     read INPUT
