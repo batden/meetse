@@ -418,19 +418,19 @@ uninstall_e25() {
   sudo rm -rf /usr/lib/libintl.so
   sudo ldconfig
 
-  if [ ! -f /usr/local/bin/enlightenment ] || [ ! -d /usr/local/etc/enlightenment ]; then
+  if [ -f /usr/local/bin/enlightenment ] && [ -f /usr/local/share/xsessions/enlightenment.desktop ]; then
+    printf "\n$BDR%s %s\n" "OOPS! SOMETHING WENT WRONG."
+    printf "$BDR%s $OFF%s\n" "PLEASE RELAUNCH THIS SCRIPT AND SELECT OPTION 3"
+    printf "$BDY%s $OFF%s\n\n" "RETRY OPTION 1 AFTERWARD."
+    beep_exit
+    exit 1
+  else
     cd $HOME
     sudo rm -rf $ESRC/e25
     rm -rf $SCRFLR
     sudo updatedb
     printf "\n$BDR%s $OFF%s\n" "Uninstall completed."
     # Candidates for deletion: Search for 'meetse' in your home folder.
-  else
-    printf "\n$BDR%s %s\n" "OOPS! SOMETHING WENT WRONG."
-    printf "$BDR%s $OFF%s\n" "PLEASE RELAUNCH THIS SCRIPT AND SELECT OPTION 3"
-    printf "$BDY%s $OFF%s\n\n" "RETRY OPTION 1 AFTERWARD."
-    beep_exit
-    exit 1
   fi
 }
 
