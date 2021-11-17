@@ -518,7 +518,7 @@ get_mbkp() {
   fi
 
   if [ -d $DOCDIR/mbackups ]; then
-    cp -aR $DOCDIR/mbackups/rlottie/build -aR $ESRC/rlottie
+    cp -aR $DOCDIR/mbackups/rlottie/build $ESRC/rlottie
 
     for I in $PROG_MN; do
       cd $ESRC/e25/$I
