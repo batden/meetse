@@ -336,7 +336,6 @@ uninstall_e25() {
   rm -rf .e
   rm -rf .e-log*
   rm -rf .elementary
-  rm -rf .cache/ebuilds
   rm -rf .cache/efreet
   rm -rf .cache/ephoto
   rm -rf .cache/evas_gl_common_caches
@@ -429,6 +428,7 @@ uninstall_e25() {
     sudo rm -rf $ESRC/e25
     rm -rf $DOCDIR/mbackups
     rm -rf $SCRFLR
+    rm -rf .cache/ebuilds
     sudo updatedb
     printf "\n$BDR%s $OFF%s\n" "Uninstall completed."
     # Candidates for deletion: Search for 'meetse' and 'ebackups' in your home folder.
