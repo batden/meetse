@@ -431,7 +431,7 @@ uninstall_e25() {
     rm -rf $SCRFLR
     sudo updatedb
     printf "\n$BDR%s $OFF%s\n" "Uninstall completed."
-    # Candidates for deletion: Search for 'meetse' in your home folder.
+    # Candidates for deletion: Search for 'meetse' and 'ebackups' in your home folder.
   fi
 }
 
