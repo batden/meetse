@@ -247,6 +247,7 @@ uninstall_e25() {
   sudo rm -rf ecore*
   sudo rm -rf ector*
   sudo rm -rf edje*
+  sudo rm -rf eet*
   sudo rm -rf eeze*
   sudo rm -rf efl*
   sudo rm -rf efreet*
