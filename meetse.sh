@@ -349,8 +349,6 @@ uninstall_e25() {
   rm -rf .config/rage
   rm -rf .config/terminology
 
-  remov_preq
-
   if [ -d $HOME/.cache/ccache ]; then
     echo
     read -t 12 -p "Remove the ccache folder? [y/N] " answer
@@ -429,6 +427,7 @@ uninstall_e25() {
     rm -rf $DOCDIR/mbackups
     rm -rf $SCRFLR
     rm -rf .cache/ebuilds
+    remov_preq
     sudo updatedb
     printf "\n$BDR%s $OFF%s\n" "Uninstall completed."
     # Candidates for deletion: Search for 'meetse' and 'ebackups' in your home folder.
