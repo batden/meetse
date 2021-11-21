@@ -413,6 +413,10 @@ uninstall_e25() {
         $(grep -E 'efl|enlightenment|ephoto|evisum|terminology|ecrire|enventor')
   done
 
+  sudo rm -rf /usr/lib/systemd/user/enlightenment.service
+  sudo rm -rf /usr/lib/systemd/user/ethumb.service
+  sudo systemctl daemon-reload
+
   sudo rm -rf /usr/lib/libintl.so
   sudo ldconfig
 
