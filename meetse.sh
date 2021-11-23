@@ -349,6 +349,7 @@ uninstall_e25() {
   rm -rf .config/express
   rm -rf .config/rage
   rm -rf .config/terminology
+  rm -rf .local/bin/esteem.sh
 
   if [ -d $HOME/.cache/ccache ]; then
     echo
