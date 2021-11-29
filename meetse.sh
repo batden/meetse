@@ -328,7 +328,7 @@ uninstall_e25() {
   sudo rm -rf org.enlightenment.Ethumb.service
 
   cd /usr/share/wayland-sessions &>/dev/null
-  sudo rm -rf enlightenment.desktop
+  sudo rm -rf enlightenment.desktop &>/dev/null
 
   cd /usr/share/xsessions
   sudo rm -rf enlightenment.desktop
