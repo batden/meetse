@@ -6,6 +6,8 @@
 
 # MEETSE.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
+# Please consider starring our repositories to show your support.
+# Cheers!
 
 ITA="\e[3m"
 BDR="\e[1;31m"
