@@ -105,7 +105,7 @@ remov_preq() {
   fi
 }
 
-uninstall_e25() {
+uninstall_e26() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     printf "$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
     beep_exit
@@ -557,7 +557,7 @@ main() {
   sel_menu
 
   if [ $INPUT == 1 ]; then
-    uninstall_e25
+    uninstall_e26
   elif [ $INPUT == 2 ]; then
     strt_afresh
   elif [ $INPUT == 3 ]; then
