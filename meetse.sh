@@ -18,6 +18,7 @@ DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 LWEB=libwebp-1.2.1
 LAVF=0.9.1
+DDTL=1.2.1
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor entice"
 
@@ -45,7 +46,7 @@ sel_menu() {
 remov_preq() {
   if [ -d $ESRC/rlottie ]; then
     echo
-    read -t 12 -p "Remove rlottie, libavif, aom and libwebp? [Y/n] " answer
+    read -t 12 -p "Remove rlottie, libavif, aom, libwebp and ddcutil? [Y/n] " answer
     case $answer in
     [yY])
       cd $ESRC/rlottie
@@ -65,6 +66,11 @@ remov_preq() {
       cd .. && rm -rf $ESRC/$LWEB
       sudo rm -rf /usr/local/bin/cwebp
       sudo rm -rf /usr/local/bin/dwebp
+      echo
+
+      cd $ESRC/ddcutil-$DDTL
+      sudo make uninstall &>/dev/null
+      cd .. && rm -rf $ESRC/ddcutil-$DDTL
       echo
       ;;
     [nN])
@@ -89,6 +95,11 @@ remov_preq() {
       sudo rm -rf /usr/local/bin/cwebp
       sudo rm -rf /usr/local/bin/dwebp
       echo
+
+      cd $ESRC/ddcutil-$DDTL
+      sudo make uninstall &>/dev/null
+      cd .. && rm -rf $ESRC/ddcutil-$DDTL
+      echo
       ;;
     esac
   fi
@@ -109,7 +120,7 @@ uninstall_e25() {
   cd $HOME
 
   for I in $PROG_MN; do
-    cd $ESRC/e25/$I
+    cd $ESRC/e26/$I
     sudo ninja -C build uninstall &>/dev/null
   done
 
@@ -432,7 +443,7 @@ uninstall_e25() {
     exit 1
   else
     cd $HOME
-    sudo rm -rf $ESRC/e25
+    sudo rm -rf $ESRC/e26
     rm -rf $DOCDIR/mbackups
     rm -rf $SCRFLR
     rm -rf .cache/ebuilds
@@ -472,7 +483,7 @@ strt_afresh() {
   cd $HOME
 
   for I in $PROG_MN; do
-    cd $ESRC/e25/$I
+    cd $ESRC/e26/$I
     rm -rf build
 
     printf "\n$BLD%s $OFF%s\n\n" "Building $I..."
@@ -517,7 +528,7 @@ get_mbkp() {
     cd $HOME
 
     for I in $PROG_MN; do
-      cd $ESRC/e25/$I
+      cd $ESRC/e26/$I
       rm -rf build
     done
   else
@@ -530,8 +541,8 @@ get_mbkp() {
     cp -aR $DOCDIR/mbackups/rlottie/build $ESRC/rlottie
 
     for I in $PROG_MN; do
-      cd $ESRC/e25/$I
-      cp -aR $DOCDIR/mbackups/$I/build $ESRC/e25/$I/
+      cd $ESRC/e26/$I
+      cp -aR $DOCDIR/mbackups/$I/build $ESRC/e26/$I/
     done
   fi
 
