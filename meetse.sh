@@ -18,6 +18,7 @@ DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 LWEB=libwebp-1.2.1
 LAVF=0.9.1
+DDTL=1.2.1
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor entice"
 
@@ -45,7 +46,7 @@ sel_menu() {
 remov_preq() {
   if [ -d $ESRC/rlottie ]; then
     echo
-    read -t 12 -p "Remove rlottie, libavif, aom and libwebp? [Y/n] " answer
+    read -t 12 -p "Remove rlottie, libavif, aom, libwebp and ddcutil? [Y/n] " answer
     case $answer in
     [yY])
       cd $ESRC/rlottie
@@ -65,6 +66,11 @@ remov_preq() {
       cd .. && rm -rf $ESRC/$LWEB
       sudo rm -rf /usr/local/bin/cwebp
       sudo rm -rf /usr/local/bin/dwebp
+      echo
+
+      cd $ESRC/ddcutil-$DDTL
+      sudo make uninstall &>/dev/null
+      cd .. && rm -rf $ESRC/ddcutil-$DDTL
       echo
       ;;
     [nN])
@@ -88,6 +94,11 @@ remov_preq() {
       cd .. && rm -rf $ESRC/$LWEB
       sudo rm -rf /usr/local/bin/cwebp
       sudo rm -rf /usr/local/bin/dwebp
+      echo
+
+      cd $ESRC/ddcutil-$DDTL
+      sudo make uninstall &>/dev/null
+      cd .. && rm -rf $ESRC/ddcutil-$DDTL
       echo
       ;;
     esac
@@ -188,6 +199,9 @@ uninstall_e25() {
   sudo rm -rf libethumb*
   sudo rm -rf libevas*
 
+  cd /usr/local/lib/cmake
+  sudo rm -rf ddcutil*
+
   cd /usr/local/lib/x86_64-linux-gnu
   sudo rm -rf ecore*
   sudo rm -rf edje*
@@ -283,6 +297,7 @@ uninstall_e25() {
 
   cd /usr/local/share
   sudo rm -rf dbus*
+  sudo rm -rf ddcutil*
   sudo rm -rf ecore*
   sudo rm -rf ecrire*
   sudo rm -rf edje*
