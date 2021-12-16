@@ -199,6 +199,9 @@ uninstall_e25() {
   sudo rm -rf libethumb*
   sudo rm -rf libevas*
 
+  cd /usr/local/lib/cmake
+  sudo rm -rf ddcutil*
+
   cd /usr/local/lib/x86_64-linux-gnu
   sudo rm -rf ecore*
   sudo rm -rf edje*
@@ -294,6 +297,7 @@ uninstall_e25() {
 
   cd /usr/local/share
   sudo rm -rf dbus*
+  sudo rm -rf ddcutil*
   sudo rm -rf ecore*
   sudo rm -rf ecrire*
   sudo rm -rf edje*
