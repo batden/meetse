@@ -17,7 +17,7 @@ OFF="\e[0m"
 DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 LWEB=libwebp-1.2.1
-LAVF=0.9.1
+LAVF=0.9.3
 DDTL=1.2.1
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor entice"
