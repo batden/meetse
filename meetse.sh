@@ -360,6 +360,7 @@ uninstall_e25() {
   rm -rf .cache/evas_gl_common_caches
   rm -rf .cache/rage
   rm -rf .config/ecrire.cfg
+  rm -rf .config/edi
   rm -rf .config/entice
   rm -rf .config/enventor
   rm -rf .config/ephoto
