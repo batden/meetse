@@ -333,6 +333,9 @@ uninstall_e25() {
   sudo rm -rf e_paledit.desktop
   sudo rm -rf terminology.desktop
 
+  cd /usr/local/share/doc
+  sudo rm -rf edi
+
   cd /usr/local/share/icons
   sudo rm -rf Enlightenment*
   sudo rm -rf elementary*
