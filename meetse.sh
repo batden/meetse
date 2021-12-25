@@ -300,6 +300,7 @@ uninstall_e25() {
   sudo rm -rf ddcutil*
   sudo rm -rf ecore*
   sudo rm -rf ecrire*
+  sudo rm -rf edi*
   sudo rm -rf edje*
   sudo rm -rf eeze*
   sudo rm -rf efl*
