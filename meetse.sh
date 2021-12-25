@@ -20,7 +20,7 @@ LWEB=libwebp-1.2.1
 LAVF=0.9.3
 DDTL=1.2.1
 
-PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor entice"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
 
 beep_exit() {
   paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
@@ -300,6 +300,7 @@ uninstall_e25() {
   sudo rm -rf ddcutil*
   sudo rm -rf ecore*
   sudo rm -rf ecrire*
+  sudo rm -rf edi*
   sudo rm -rf edje*
   sudo rm -rf eeze*
   sudo rm -rf efl*
@@ -359,6 +360,7 @@ uninstall_e25() {
   rm -rf .cache/evas_gl_common_caches
   rm -rf .cache/rage
   rm -rf .config/ecrire.cfg
+  rm -rf .config/edi
   rm -rf .config/entice
   rm -rf .config/enventor
   rm -rf .config/ephoto
