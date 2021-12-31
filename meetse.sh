@@ -484,8 +484,8 @@ strt_afresh() {
 
   meson -Dexample=false \
     build
-  ninja -C build || true
-  $SNIN || true
+  ninja -C build
+  $SNIN
   sudo ldconfig
   echo
 
@@ -503,15 +503,15 @@ strt_afresh() {
       meson -Dbuild-examples=false -Dbuild-tests=false \
         -Dlua-interpreter=lua -Dbindings= \
         build
-      ninja -C build || true
+      ninja -C build
       ;;
     *)
       meson build
-      ninja -C build || true
+      ninja -C build
       ;;
     esac
 
-    $SNIN || true
+    $SNIN
     sudo ldconfig
   done
 
