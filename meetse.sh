@@ -546,14 +546,16 @@ get_mbkp() {
     exit 1
   fi
 
-  if [ -d $DOCDIR/mbackups ]; then
-    cp -aR $DOCDIR/mbackups/rlottie/build $ESRC/rlottie
-
-    for I in $PROG_MN; do
-      cd $ESRC/e25/$I
-      cp -aR $DOCDIR/mbackups/$I/build $ESRC/e25/$I/
-    done
+  if [ ! -d $DOCDIR/mbackups/edi ]; then
+    cp -aR $ESRC/e25/edi/build $DOCDIR/mbackups/edi
   fi
+
+  cp -aR $DOCDIR/mbackups/rlottie/build $ESRC/rlottie
+
+  for I in $PROG_MN; do
+    cd $ESRC/e25/$I
+    cp -aR $DOCDIR/mbackups/$I/build $ESRC/e25/$I/
+  done
 
   printf "\n$BDY%s $OFF%s\n" "Done."
 }
