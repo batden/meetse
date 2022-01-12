@@ -381,6 +381,7 @@ uninstall_e25() {
     [yY])
       ccache -C
       rm -rf $HOME/.cache/ccache
+      echo
       ;;
     [nN])
       printf "\n$ITA%s $OFF%s\n\n" "(do not delete the ccache folder... OK)"
@@ -400,6 +401,7 @@ uninstall_e25() {
     [yY])
       ccache -C
       rm -rf $HOME/.ccache
+      echo
       ;;
     [nN])
       printf "\n$ITA%s $OFF%s\n\n" "(do not delete the ccache folder... OK)"
