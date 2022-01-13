@@ -337,6 +337,9 @@ uninstall_e25() {
   cd /usr/local/share/doc
   sudo rm -rf edi
 
+  cd /usr/local/share/gdb/auto-load/usr/lib
+  sudo rm -rf libeo*
+
   cd /usr/local/share/icons
   sudo rm -rf Enlightenment*
   sudo rm -rf elementary*
