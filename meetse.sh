@@ -349,6 +349,9 @@ uninstall_e25() {
   sudo rm -rf evisum.png
   sudo rm -rf terminology.png
 
+  cd /usr/local/share/info
+  sudo rm -rf edi
+
   cd /usr/share/dbus-1/services
   sudo rm -rf org.enlightenment.Ethumb.service
 
