@@ -452,7 +452,7 @@ uninstall_e25() {
   sudo rm -rf /usr/lib/libintl.so
   sudo ldconfig
 
-  if [ -f /usr/local/bin/enlightenment ] &&
+  if [ -x /usr/local/bin/enlightenment_start ] &&
     [ -f /usr/local/share/xsessions/enlightenment.desktop ]; then
     printf "\n$BDR%s %s\n" "OOPS! SOMETHING WENT WRONG."
     printf "$BDR%s $OFF%s\n" "PLEASE RELAUNCH THIS SCRIPT AND SELECT OPTION 3"
