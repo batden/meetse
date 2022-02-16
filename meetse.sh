@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # This Bash script helps you cleanly uninstall Enlightenment and related applications.
-# Or allows you to fix issues like Meson version mismatch errors, without
-# uninstalling everything.
+# Alternatively, you can use it to fix issues like Meson version mismatch errors,
+# without uninstalling everything.
 
 # MEETSE.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
