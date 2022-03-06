@@ -67,7 +67,6 @@ remov_preq() {
       cd .. && rm -rf $ESRC/$LWEB
       sudo rm -rf /usr/local/bin/cwebp
       sudo rm -rf /usr/local/bin/dwebp
-      echo
 
       cd $ESRC/ddcutil-$DDTL
       sudo make uninstall &>/dev/null
@@ -95,7 +94,6 @@ remov_preq() {
       cd .. && rm -rf $ESRC/$LWEB
       sudo rm -rf /usr/local/bin/cwebp
       sudo rm -rf /usr/local/bin/dwebp
-      echo
 
       cd $ESRC/ddcutil-$DDTL
       sudo make uninstall &>/dev/null
