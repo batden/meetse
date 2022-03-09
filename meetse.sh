@@ -44,61 +44,44 @@ sel_menu() {
   fi
 }
 
+preq_remov() {
+  cd $ESRC/rlottie
+  sudo ninja -C build uninstall &>/dev/null
+  cd .. && rm -rf rlottie
+
+  cd $ESRC/libavif-$LAVF/build
+  xargs sudo rm -rf <install_manifest.txt
+  cd ../.. && rm -rf libavif-$LAVF
+
+  cd $ESRC/aom/aom-build
+  xargs sudo rm -rf <install_manifest.txt
+  cd ../.. && rm -rf aom
+
+  cd $ESRC/$LWEB
+  sudo make uninstall &>/dev/null
+  cd .. && rm -rf $ESRC/$LWEB
+  sudo rm -rf /usr/local/bin/cwebp
+  sudo rm -rf /usr/local/bin/dwebp
+
+  cd $ESRC/ddcutil-$DDTL
+  sudo make uninstall &>/dev/null
+  cd .. && rm -rf $ESRC/ddcutil-$DDTL
+  echo
+}
+
 remov_preq() {
   if [ -d $ESRC/rlottie ]; then
     echo
     read -t 12 -p "Remove rlottie, libavif, aom, libwebp and ddcutil? [Y/n] " answer
     case $answer in
     [yY])
-      cd $ESRC/rlottie
-      sudo ninja -C build uninstall &>/dev/null
-      cd .. && rm -rf rlottie
-
-      cd $ESRC/libavif-$LAVF/build
-      xargs sudo rm -rf <install_manifest.txt
-      cd ../.. && rm -rf libavif-$LAVF
-
-      cd $ESRC/aom/aom-build
-      xargs sudo rm -rf <install_manifest.txt
-      cd ../.. && rm -rf aom
-
-      cd $ESRC/$LWEB
-      sudo make uninstall &>/dev/null
-      cd .. && rm -rf $ESRC/$LWEB
-      sudo rm -rf /usr/local/bin/cwebp
-      sudo rm -rf /usr/local/bin/dwebp
-
-      cd $ESRC/ddcutil-$DDTL
-      sudo make uninstall &>/dev/null
-      cd .. && rm -rf $ESRC/ddcutil-$DDTL
-      echo
+      preq_remov
       ;;
     [nN])
       printf "\n$ITA%s $OFF%s\n\n" "(do not remove prerequisites... OK)"
       ;;
     *)
-      cd $ESRC/rlottie
-      sudo ninja -C build uninstall &>/dev/null
-      cd .. && rm -rf rlottie
-
-      cd $ESRC/libavif-$LAVF/build
-      xargs sudo rm -rf <install_manifest.txt
-      cd ../.. && rm -rf libavif-$LAVF
-
-      cd $ESRC/aom/aom-build
-      xargs sudo rm -rf <install_manifest.txt
-      cd ../.. && rm -rf aom
-
-      cd $ESRC/$LWEB
-      sudo make uninstall &>/dev/null
-      cd .. && rm -rf $ESRC/$LWEB
-      sudo rm -rf /usr/local/bin/cwebp
-      sudo rm -rf /usr/local/bin/dwebp
-
-      cd $ESRC/ddcutil-$DDTL
-      sudo make uninstall &>/dev/null
-      cd .. && rm -rf $ESRC/ddcutil-$DDTL
-      echo
+      preq_remov
       ;;
     esac
   fi
