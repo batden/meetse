@@ -496,10 +496,6 @@ get_mbkp() {
     exit 1
   fi
 
-  if [ ! -d $DOCDIR/mbackups/edi ]; then
-    cp -aR $ESRC/e25/edi/build $DOCDIR/mbackups/edi
-  fi
-
   cp -aR $DOCDIR/mbackups/rlottie/build $ESRC/rlottie
 
   for I in $PROG_MN; do
