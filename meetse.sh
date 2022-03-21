@@ -4,7 +4,7 @@
 # Alternatively, you can use it to fix issues like Meson version mismatch errors,
 # without uninstalling everything.
 
-# MEETSE.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
+# MEETSE is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
 # Please consider starring our repositories to show your support.
 # Cheers!
@@ -409,7 +409,7 @@ uninstall_e25() {
     remov_preq
     sudo updatedb
     printf "\n$BDR%s $OFF%s\n" "Uninstall completed."
-    # Candidates for deletion: Search for 'meetse', 'ebackups' and 'pbackups' in your home folder.
+    # Candidates for deletion: Search for “meetse”, “ebackups” and “pbackups” in your home folder.
   fi
 }
 
