@@ -30,7 +30,7 @@ Then issue the following command:
 ./meetse.sh
 ```
 
-### Update local repository
+## Update local repository
 
 Change to ~/.meetse/ and run:
 
