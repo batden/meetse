@@ -4,7 +4,7 @@
 
 Please take a look at the comments in the script (lines beginning with '#') before running it.
 
-*See also [esteem.sh](https://github.com/batden/esteem)*
+See also [esteem.sh](https://github.com/batden/esteem)
 
 ## Get started
 
