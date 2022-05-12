@@ -29,13 +29,3 @@ Then issue the following command:
 ```bash
 ./meetse.sh
 ```
-
-## Update local repository
-
-Change to ~/.meetse/ and run:
-
-```bash
-git pull
-```
-
-That's it.
