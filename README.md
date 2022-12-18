@@ -1,12 +1,12 @@
 # meetse - work in progress
 
-Use this script to uninstall Enlightenment 25 and related applications.
+Use this script to uninstall Enlightenment and related applications.
 
 Please take a look at the comments in the script before running it.
 
-See also [esteem.sh](https://github.com/batden/esteem)
+See also [esteem.sh](https://github.com/batden/esteem) (installation script).
 
-**This script is no longer maintained.**
+**This script is under heavy development. Do not use it!**
 
 ## Get started
 
