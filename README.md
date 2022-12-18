@@ -1,4 +1,4 @@
-# meetse
+# meetse - work in progress
 
 Use this script to uninstall Enlightenment 25 and related applications.
 
