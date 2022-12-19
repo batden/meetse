@@ -45,7 +45,14 @@ remov_preq() {
       printf "\n$ITA%s $OFF%s\n\n" "(do not remove prerequisites... OK)"
       ;;
     *)
-      printf "\n$ITA%s $OFF%s\n\n" "(do not remove prerequisites... OK)"
+      cd $ESRC/rlottie
+      sudo ninja -C build uninstall &>/dev/null
+      cd .. && rm -rf rlottie
+
+      cd $ESRC/ddcutil-$DDTL
+      sudo make uninstall &>/dev/null
+      cd .. && rm -rf $ESRC/ddcutil-$DDTL
+      echo
       ;;
     esac
   else
