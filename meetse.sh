@@ -85,7 +85,9 @@ uninstall_e26() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
 
   clear
-  printf "\n\n$BDR%s $OFF%s\n\n" "* UNINSTALLING ENLIGHTENMENT DESKTOP *"
+  printf "\n\n$BDR%s %s\n\n" "* UNINSTALLING ENLIGHTENMENT DESKTOP *"
+  printf "$BDR%s $OFF%s\n\n" "This may take a while..."
+  sleep 1
 
   cd $HOME
 
@@ -396,3 +398,5 @@ lo() {
 
   printf "\n$BDR%s $OFF%s\n\n" "Done."
 }
+
+lo
