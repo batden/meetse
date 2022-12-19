@@ -16,6 +16,7 @@ BDR="\e[1;31m"
 OFF="\e[0m"
 
 SCRFLR=$HOME/.esteem
+DISTRO=$(lsb_release -sc)
 DDTL=1.3.0
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
