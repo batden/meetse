@@ -1,4 +1,4 @@
-# meetse - work in progress
+# meetse
 
 Use this script to uninstall Enlightenment and related applications.
 
