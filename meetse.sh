@@ -13,83 +13,64 @@
 
 ITA="\e[3m"
 BDR="\e[1;31m"
-BDY="\e[1;33m"
 OFF="\e[0m"
 
 DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 SNIN="sudo ninja -C build install"
-LWEB=libwebp-1.2.1
-LAVF=0.9.3
-DDTL=1.2.1
+DDTL=1.3.0
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
 
 beep_exit() {
-  paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
-}
-
-# Hints.
-# 1: Uninstall the whole Enlightenment desktop environment.
-# 2: Delete the Meson build folders and build anew everything that needs to be rebuilt.
-# 3: Restore earlier versions of Meson builddirs.
-#
-sel_menu() {
-  if [ $INPUT -lt 1 ]; then
-    echo
-    printf "1  $BDR%s $OFF%s\n\n" "Uninstall Enlightenment now"
-    printf "2  $BDY%s $OFF%s\n\n" "Fix Meson errors and rebuild"
-    printf "3  $BDY%s $OFF%s\n\n" "Restore Meson builddirs from backup"
-
-    sleep 1 && printf "$ITA%s $OFF%s\n\n" "Or press Ctrl+C to quit."
-    read INPUT
-  fi
-}
-
-preq_remov() {
-  cd $ESRC/rlottie
-  sudo ninja -C build uninstall &>/dev/null
-  cd .. && rm -rf rlottie
-
-  cd $ESRC/libavif-$LAVF/build
-  xargs sudo rm -rf <install_manifest.txt
-  cd ../.. && rm -rf libavif-$LAVF
-
-  cd $ESRC/aom/aom-build
-  xargs sudo rm -rf <install_manifest.txt
-  cd ../.. && rm -rf aom
-
-  cd $ESRC/$LWEB
-  sudo make uninstall &>/dev/null
-  cd .. && rm -rf $ESRC/$LWEB
-  sudo rm -rf /usr/local/bin/cwebp
-  sudo rm -rf /usr/local/bin/dwebp
-
-  cd $ESRC/ddcutil-$DDTL
-  sudo make uninstall &>/dev/null
-  cd .. && rm -rf $ESRC/ddcutil-$DDTL
-  echo
+  aplay --quiet /usr/share/sounds/sound-icons/pipe.wav 2>/dev/null
 }
 
 remov_preq() {
-  if [ -d $ESRC/rlottie ]; then
-    echo
-    read -t 12 -p "Remove rlottie, libavif, aom, libwebp and ddcutil? [Y/n] " answer
+  echo
+  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ]; then
+    read -t 12 -p "Remove rlottie and ddcutil? [Y/n] " answer
     case $answer in
     [yY])
-      preq_remov
+      cd $ESRC/rlottie
+      sudo ninja -C build uninstall &>/dev/null
+      cd .. && rm -rf rlottie
+
+      cd $ESRC/ddcutil-$DDTL
+      sudo make uninstall &>/dev/null
+      cd .. && rm -rf $ESRC/ddcutil-$DDTL
+      echo
       ;;
     [nN])
       printf "\n$ITA%s $OFF%s\n\n" "(do not remove prerequisites... OK)"
       ;;
     *)
-      preq_remov
+      printf "\n$ITA%s $OFF%s\n\n" "(do not remove prerequisites... OK)"
+      ;;
+    esac
+  else
+    read -t 12 -p "Remove rlottie? [Y/n] " answer
+    case $answer in
+    [yY])
+      cd $ESRC/rlottie
+      sudo ninja -C build uninstall &>/dev/null
+      cd .. && rm -rf rlottie
+      echo
+      ;;
+    [nN])
+      printf "\n$ITA%s $OFF%s\n\n" "(do not remove prerequisites... OK)"
+      ;;
+    *)
+      cd $ESRC/rlottie
+      sudo ninja -C build uninstall &>/dev/null
+      cd .. && rm -rf rlottie
+      echo
       ;;
     esac
   fi
 }
 
-uninstall_e25() {
+uninstall_e26() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     printf "$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
     beep_exit
@@ -345,9 +326,12 @@ uninstall_e25() {
   sudo rm -rf enlightenment.desktop
 
   cd $HOME
+  sudo rm -rf $ESRC/e26
+  rm -rf $SCRFLR
   rm -rf .e
   rm -rf .e-log*
   rm -rf .elementary
+  rm -rf .cache/ebuilds
   rm -rf .cache/efreet
   rm -rf .cache/ephoto
   rm -rf .cache/evas_gl_common_caches
@@ -361,7 +345,9 @@ uninstall_e25() {
   rm -rf .config/express
   rm -rf .config/rage
   rm -rf .config/terminology
-  rm -rf .local/bin/esteem.sh
+  rm -rf .local/bin/elluminate.sh
+
+  remov_preq
 
   if [ -f $HOME/.bash_aliases ]; then
     read -t 12 -p "Remove the bash_aliases file? [Y/n] " answer
@@ -394,137 +380,14 @@ uninstall_e25() {
 
   sudo rm -rf /usr/lib/libintl.so
   sudo ldconfig
-
-  if [ -x /usr/local/bin/enlightenment_start ] &&
-    [ -f /usr/local/share/xsessions/enlightenment.desktop ]; then
-    printf "\n$BDR%s %s\n" "OOPS! SOMETHING WENT WRONG."
-    printf "$BDR%s $OFF%s\n" "PLEASE RELAUNCH THIS SCRIPT AND SELECT OPTION 3"
-    printf "$BDY%s $OFF%s\n\n" "RETRY OPTION 1 AFTERWARD."
-    beep_exit
-    exit 1
-  else
-    cd $HOME
-    sudo rm -rf $ESRC/e25
-    rm -rf $DOCDIR/mbackups
-    rm -rf $SCRFLR
-    rm -rf .cache/ebuilds
-    remov_preq
-    sudo updatedb
-    printf "\n$BDR%s $OFF%s\n" "Uninstall completed."
-    # Candidates for deletion: Search for “meetse”, “ebackups” and “pbackups” in your home folder.
-  fi
+  sudo updatedb
+  # Candidates for deletion: Search for “meetse”, “ebackups” and “pbackups” in your home folder.
 }
 
-strt_afresh() {
-  if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
-    printf "$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
-    beep_exit
-    exit 1
-  fi
-
-  ESRC=$(cat $HOME/.cache/ebuilds/storepath)
-
-  clear
-  printf "\n\n$BDY%s $OFF%s\n\n" "* FIXING MESON ERRORS *"
-  sleep 2
-
-  cd $ESRC/rlottie
-  rm -rf build
-
-  printf "\n$BLD%s $OFF%s\n\n" "Building rlottie..."
-  # Plain build.
-
-  meson -Dexample=false \
-    build
-  ninja -C build
-  $SNIN
-  sudo ldconfig
-  echo
-
-  cd $HOME
-
-  for I in $PROG_MN; do
-    cd $ESRC/e25/$I
-    rm -rf build
-
-    printf "\n$BLD%s $OFF%s\n\n" "Building $I..."
-    # Plain build.
-
-    case $I in
-    efl)
-      meson -Dbuild-examples=false -Dbuild-tests=false \
-        -Dlua-interpreter=lua -Dbindings= \
-        build
-      ninja -C build
-      ;;
-    *)
-      meson build
-      ninja -C build
-      ;;
-    esac
-
-    $SNIN
-    sudo ldconfig
-  done
-
-  printf "\n$BDY%s $OFF%s\n" "Done."
-}
-
-get_mbkp() {
-  if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
-    printf "$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
-    beep_exit
-    exit 1
-  fi
-
-  ESRC=$(cat $HOME/.cache/ebuilds/storepath)
-
-  clear
-  printf "\n\n$BDY%s $OFF%s\n\n" "* RESTORING MESON BUILDDIRS *"
-  sleep 2
-
-  if [ -d $DOCDIR/mbackups ]; then
-    cd $ESRC/rlottie
-    rm -rf build
-    cd $HOME
-
-    for I in $PROG_MN; do
-      cd $ESRC/e25/$I
-      rm -rf build
-    done
-  else
-    printf "\n\n$BDr%s $OFF%s\n\n" "* NO BACKUP FOUND! *"
-    beep_exit
-    exit 1
-  fi
-
-  cp -aR $DOCDIR/mbackups/rlottie/build $ESRC/rlottie
-
-  for I in $PROG_MN; do
-    cd $ESRC/e25/$I
-    cp -aR $DOCDIR/mbackups/$I/build $ESRC/e25/$I/
-  done
-
-  printf "\n$BDY%s $OFF%s\n" "Done."
-}
-
-main() {
+lo() {
   trap '{ printf "\n$BDR%s $OFF%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' INT
 
-  INPUT=0
-  printf "\n$BLD%s $OFF%s\n" "Please enter the number of your choice:"
-  sel_menu
+  uninstall_e26
 
-  if [ $INPUT == 1 ]; then
-    uninstall_e25
-  elif [ $INPUT == 2 ]; then
-    strt_afresh
-  elif [ $INPUT == 3 ]; then
-    get_mbkp
-  else
-    beep_exit
-    exit 1
-  fi
+  printf "\n$BDR%s $OFF%s\n\n" "Done."
 }
-
-main
