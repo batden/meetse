@@ -85,7 +85,7 @@ uninstall_e26() {
   cd $HOME
 
   for I in $PROG_MN; do
-    cd $ESRC/e25/$I
+    cd $ESRC/e26/$I
     sudo ninja -C build uninstall &>/dev/null
   done
 
