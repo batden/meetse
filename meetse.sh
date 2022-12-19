@@ -15,9 +15,7 @@ ITA="\e[3m"
 BDR="\e[1;31m"
 OFF="\e[0m"
 
-DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
-SNIN="sudo ninja -C build install"
 DDTL=1.3.0
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
@@ -352,7 +350,7 @@ uninstall_e26() {
   rm -rf .config/express
   rm -rf .config/rage
   rm -rf .config/terminology
-  rm -rf .local/bin/elluminate.sh
+  rm -rf .local/bin/esteem.sh
 
   remov_preq
 
