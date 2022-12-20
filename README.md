@@ -4,7 +4,7 @@
 
 Please take a look at the comments in the script before running it.
 
-See also [esteem.sh](https://github.com/batden/esteem) (installation script).
+*See also [esteem.sh](https://github.com/batden/esteem) (installation script).*
 
 ## Get started
 
