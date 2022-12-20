@@ -6,8 +6,6 @@ Please take a look at the comments in the script before running it.
 
 See also [esteem.sh](https://github.com/batden/esteem) (installation script).
 
-**This script is under heavy development. Do not use it!**
-
 ## Get started
 
 First, clone this repository:
