@@ -20,7 +20,7 @@ SCRFLR=$HOME/.esteem
 DISTRO=$(lsb_release -sc)
 DDTL=1.3.0
 
-PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice enlightenment-module-forecasts"
 
 beep_exit() {
   aplay --quiet /usr/share/sounds/sound-icons/pipe.wav 2>/dev/null
@@ -380,7 +380,7 @@ uninstall_e26() {
   find /usr/local/share/locale/*/LC_MESSAGES 2>/dev/null | while read -r I; do
     echo "$I" |
       xargs sudo rm -rf \
-        $(grep -E 'efl|enlightenment|ephoto|evisum|terminology|ecrire|edi|enventor')
+        $(grep -E 'efl|enlightenment|ephoto|evisum|terminology|ecrire|edi|enventor|forecasts')
   done
 
   sudo rm -rf /usr/lib/systemd/user/enlightenment.service
