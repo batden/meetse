@@ -32,7 +32,7 @@ remov_preq() {
   if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ]; then
     read -t 12 -p "Remove rlottie and ddcutil? [Y/n] " answer
     case $answer in
-    [yY])
+    y | Y)
       cd $ESRC/rlottie
       sudo ninja -C build uninstall &>/dev/null
       cd .. && rm -rf rlottie
@@ -42,7 +42,7 @@ remov_preq() {
       cd .. && rm -rf $ESRC/ddcutil-$DDTL
       echo
       ;;
-    [nN])
+    n | N)
       printf "\n$ITA%s $OFF%s\n\n" "(do not remove prerequisites... OK)"
       ;;
     *)
@@ -59,13 +59,13 @@ remov_preq() {
   else
     read -t 12 -p "Remove rlottie? [Y/n] " answer
     case $answer in
-    [yY])
+    y | Y)
       cd $ESRC/rlottie
       sudo ninja -C build uninstall &>/dev/null
       cd .. && rm -rf rlottie
       echo
       ;;
-    [nN])
+    n | N)
       printf "\n$ITA%s $OFF%s\n\n" "(do not remove rlottie... OK)"
       ;;
     *)
@@ -362,11 +362,11 @@ uninstall_e26() {
   if [ -f $HOME/.bash_aliases ]; then
     read -t 12 -p "Remove the bash_aliases file? [Y/n] " answer
     case $answer in
-    [yY])
+    y | Y)
       rm -rf $HOME/.bash_aliases && source $HOME/.bashrc
       sleep 1
       ;;
-    [nN])
+    n | N)
       printf "\n$ITA%s $OFF%s\n\n" "(do not delete bash_aliases... OK)"
       sleep 1
       ;;
