@@ -22,6 +22,7 @@ DDTL=1.3.0
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice
 enlightenment-module-forecasts"
+PROG_AT="eflete"
 
 beep_exit() {
   aplay --quiet /usr/share/sounds/sound-icons/pipe.wav 2>/dev/null
@@ -97,6 +98,11 @@ uninstall_e26() {
   for I in $PROG_MN; do
     cd $ESRC/e26/$I
     sudo ninja -C build uninstall &>/dev/null
+  done
+
+  for I in $PROG_AT; do
+    cd $ESRC/e26/$I
+    sudo make uninstall &>/dev/null
   done
 
   cd /etc
@@ -279,6 +285,7 @@ uninstall_e26() {
   sudo rm -rf edje*
   sudo rm -rf eeze*
   sudo rm -rf efl*
+  sudo rm -rf eflete*
   sudo rm -rf efreet*
   sudo rm -rf elementary*
   sudo rm -rf elua*
@@ -348,6 +355,7 @@ uninstall_e26() {
   rm -rf .cache/rage
   rm -rf .config/ecrire.cfg
   rm -rf .config/edi
+  rm -rf .config/eflete
   rm -rf .config/entice
   rm -rf .config/enventor
   rm -rf .config/ephoto
