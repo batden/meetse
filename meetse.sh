@@ -18,7 +18,7 @@ OFF="\e[0m"
 
 SCRFLR=$HOME/.esteem
 DISTRO=$(lsb_release -sc)
-DDTL=1.3.0
+DDTL=1.4.1
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice
 enlightenment-module-forecasts"
