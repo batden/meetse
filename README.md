@@ -1,6 +1,6 @@
 # meetse
 
-**Use this script to uninstall Enlightenment and related applications.** :new_moon_with_face:
+### Use this script to uninstall Enlightenment and related applications :new_moon_with_face:
 
 Please take a look at the comments in the script before running it.
 
