@@ -389,7 +389,6 @@ uninstall_e26() {
 
   sudo rm -rf /usr/lib/libintl.so
   sudo ldconfig
-  sudo updatedb
   # Candidates for deletion: Search for “meetse”, “ebackups” and “pbackups” in your home folder.
 }
 
