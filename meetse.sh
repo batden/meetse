@@ -397,7 +397,7 @@ lo() {
 
   uninstall_e26
 
-  printf "\n$BDR%s $OFF%s\n\n" "Done."
+  printf "\n$BDR%s $OFF%s\n\n" "Done!"
 }
 
 lo
