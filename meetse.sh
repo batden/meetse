@@ -18,7 +18,7 @@ SCRFLR=$HOME/.esteem
 DISTRO=$(lsb_release -sc)
 DDTL=2.0.0
 
-PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice enlightenment-module-forecasts eflete"
+PROG_MN="terminology enlightenment ephoto evisum rage express ecrire enventor edi entice enlightenment-module-forecasts eflete efl"
 
 beep_exit() {
   aplay --quiet /usr/share/sounds/sound-icons/pipe.wav 2>/dev/null
