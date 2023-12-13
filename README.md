@@ -16,7 +16,7 @@ git clone https://github.com/batden/meetse.git .meetse
 
 This creates a new hidden folder named **.meetse** in your home directory.
 
-Copy the file meetse.sh from this new folder to the download folder.
+Copy the file meetse.sh from this new folder to your download folder.
 
 Now change to the download folder and make the script executable:
 
