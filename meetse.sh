@@ -391,6 +391,7 @@ uninstall_e26() {
   # Candidates for deletion: Search for “meetse”, “ebackups” and “pbackups” in your home folder.
 }
 
+# Calls the main function.
 lo() {
   trap '{ printf "\n$BDR%s $OFF%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' INT
 
