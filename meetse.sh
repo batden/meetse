@@ -114,7 +114,7 @@ uninstall_e26() {
   sudo rm -rf evas*
 
   cd /usr/local/bin
-  sudo rm -rf e_paledit*
+  sudo rm -rf enlightenment_paledit*
   sudo rm -rf eina*
   sudo rm -rf efl*
   sudo rm -rf elua*
@@ -304,7 +304,7 @@ uninstall_e26() {
   sudo sed -i '/entice/d' mimeinfo.cache &>/dev/null
   sudo sed -i '/ephoto/d' mimeinfo.cache &>/dev/null
   sudo sed -i '/rage/d' mimeinfo.cache &>/dev/null
-  sudo rm -rf e_paledit.desktop
+  sudo rm -rf enlightenment_paledit.desktop
   sudo rm -rf terminology.desktop
 
   cd /usr/local/share/doc
