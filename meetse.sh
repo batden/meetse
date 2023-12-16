@@ -97,6 +97,8 @@ uninstall_e26() {
     sudo ninja -C build uninstall &>/dev/null
   done
 
+  remov_preq
+
   cd /etc
   sudo rm -rf enlightenment
 
@@ -356,8 +358,6 @@ uninstall_e26() {
   rm -rf .config/rage
   rm -rf .config/terminology
   rm -rf .local/bin/esteem.sh
-
-  remov_preq
 
   if [ -f $HOME/.bash_aliases ]; then
     read -t 12 -p "Remove the bash_aliases file? [Y/n] " answer
