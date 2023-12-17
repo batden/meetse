@@ -37,5 +37,3 @@ Change to ~/.meetse/ and run:
 ```bash
 git pull
 ```
-
-That's it.
