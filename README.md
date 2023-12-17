@@ -14,7 +14,7 @@ First, clone this repository:
 git clone https://github.com/batden/meetse.git .meetse
 ```
 
-This creates a new hidden folder named **.meetse** in your home directory.
+This creates a new hidden folder named .meetse in your home directory.
 
 Copy the meetse.sh file from the new .meetse folder to your download folder.
 
@@ -24,13 +24,13 @@ Navigate to the download folder and make the script executable:
 chmod +x meetse.sh
 ```
 
-Then issue the following command:
+Then execute the script with:
 
 ```bash
 ./meetse.sh
 ```
 
-## Update local repository
+## Update local repo
 
 Change to ~/.meetse/ and run:
 
