@@ -82,7 +82,7 @@ uninstall_e26() {
     echo
   done
 
-  remov_preq
+  remov_rcmd
 
   cd /etc
   sudo rm -rf enlightenment
