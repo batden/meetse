@@ -15,7 +15,6 @@ OFF="\e[0m"
 
 SCRFLR=$HOME/.esteem
 DISTRO=$(lsb_release -sc)
-DDTL=2.0.0
 
 PROG_MN="
 terminology
@@ -36,61 +35,28 @@ beep_exit() {
   aplay --quiet /usr/share/sounds/sound-icons/pipe.wav 2>/dev/null
 }
 
-remov_preq() {
+remov_rcmd() {
   echo
 
-  if [ $DISTRO == kinetic ]; then
-    read -t 12 -p "Remove rlottie and ddcutil? [Y/n] " answer
-    case $answer in
-    y | Y)
-      cd $ESRC/rlottie
-      sudo ninja -C build uninstall &>/dev/null
-      cd .. && rm -rf rlottie
-      echo
-
-      cd $ESRC/ddcutil-$DDTL
-      sudo make uninstall &>/dev/null
-      cd .. && rm -rf $ESRC/ddcutil-$DDTL
-      echo
-      ;;
-    n | N)
-      printf "\n$ITA%s $OFF%s\n\n" "(do not remove prerequisites... OK)"
-      ;;
-    *)
-      cd $ESRC/rlottie
-      echo
-      sudo ninja -C build uninstall &>/dev/null
-      cd .. && rm -rf rlottie
-      echo
-
-      cd $ESRC/ddcutil-$DDTL
-      echo
-      sudo make uninstall &>/dev/null
-      cd .. && rm -rf $ESRC/ddcutil-$DDTL
-      echo
-      ;;
-    esac
-  else
-    read -t 12 -p "Remove rlottie? [Y/n] " answer
-    case $answer in
-    y | Y)
-      cd $ESRC/rlottie
-      sudo ninja -C build uninstall &>/dev/null
-      cd .. && rm -rf rlottie
-      echo
-      ;;
-    n | N)
-      printf "\n$ITA%s $OFF%s\n\n" "(do not remove rlottie... OK)"
-      ;;
-    *)
-      cd $ESRC/rlottie
-      echo
-      sudo ninja -C build uninstall &>/dev/null
-      cd .. && rm -rf rlottie
-      echo
-      ;;
-    esac
-  fi
+  read -t 12 -p "Remove rlottie? [Y/n] " answer
+  case $answer in
+  y | Y)
+    cd $ESRC/rlottie
+    sudo ninja -C build uninstall &>/dev/null
+    cd .. && rm -rf rlottie
+    echo
+    ;;
+  n | N)
+    printf "\n$ITA%s $OFF%s\n\n" "(do not remove rlottie... OK)"
+    ;;
+  *)
+    cd $ESRC/rlottie
+    echo
+    sudo ninja -C build uninstall &>/dev/null
+    cd .. && rm -rf rlottie
+    echo
+    ;;
+  esac
 }
 
 uninstall_e26() {
