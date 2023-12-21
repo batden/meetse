@@ -14,7 +14,6 @@ BDR="\e[1;31m"
 OFF="\e[0m"
 
 SCRFLR=$HOME/.esteem
-DISTRO=$(lsb_release -sc)
 
 PROG_MN="
 terminology
