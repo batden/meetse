@@ -345,14 +345,14 @@ uninstall_e26() {
   rm -rf .local/bin/esteem.sh
 
   if [ -f $HOME/.bash_aliases ]; then
-    read -t 12 -p "Remove the bash_aliases file? [Y/n] " answer
+    read -t 12 -p "Remove the .bash_aliases file? [Y/n] " answer
     case $answer in
     y | Y)
       rm -rf $HOME/.bash_aliases && source $HOME/.bashrc
       sleep 1
       ;;
     n | N)
-      printf "\n$ITA%s $OFF%s\n\n" "(do not delete bash_aliases... OK)"
+      printf "\n$ITA%s $OFF%s\n\n" "(do not delete .bash_aliases... OK)"
       sleep 1
       ;;
     *)
