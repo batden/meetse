@@ -58,115 +58,32 @@ remov_rcmd() {
   esac
 }
 
-uninstall_e26() {
-  if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
-    printf "$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
-    beep_exit
-    exit 1
-  fi
-
-  ESRC=$(cat $HOME/.cache/ebuilds/storepath)
-
-  clear
-  printf "\n\n$BDR%s %s\n\n" "* UNINSTALLING ENLIGHTENMENT DESKTOP ENVIRONMENT *"
-  printf "$BDR%s %s\n\n" "This may take a few minutes."
-  sleep 1
-  printf "$BDR%s $OFF%s\n\n" "You will be prompted to answer some basic questions..."
-  sleep 1
-
-  cd $HOME
-
-  for I in $PROG_MN; do
-    cd $ESRC/e26/$I
-    sudo ninja -C build uninstall &>/dev/null
-    echo
-  done
-
-  remov_rcmd
-
+# Clean any leftover files after uninstalling Enlightenment and related applications.
+del_list() {
   cd /etc
   sudo rm -rf enlightenment
 
   cd /etc/xdg/menus
   sudo rm -rf e-applications.menu
 
-  cd /usr/local
-  sudo rm -rf ecore*
-  sudo rm -rf edje*
-  sudo rm -rf efl*
-  sudo rm -rf eio*
-  sudo rm -rf eldbus*
-  sudo rm -rf elementary*
-  sudo rm -rf eo*
-  sudo rm -rf evas*
-
   cd /usr/local/bin
-  sudo rm -rf enlightenment_paledit*
-  sudo rm -rf eina*
   sudo rm -rf efl*
-  sudo rm -rf elua*
-  sudo rm -rf enventor*
-  sudo rm -rf evisum*
-  sudo rm -rf eolian*
-  sudo rm -rf emotion*
-  sudo rm -rf evas*
-  sudo rm -rf terminology*
-  sudo rm -rf ty*
 
   cd /usr/local/etc
   sudo rm -rf enlightenment
 
   cd /usr/local/include
   sudo rm -rf -- *-1
-  sudo rm -rf aom
-  sudo rm -rf avif
   sudo rm -rf enlightenment
-  sudo rm -rf express*
-  sudo rm -rf webp*
+  sudo rm -rf express-0
 
-  cd /usr/local/lib
-  sudo rm -rf ecore*
-  sudo rm -rf edje*
-  sudo rm -rf eeze*
-  sudo rm -rf efl*
-  sudo rm -rf efreet*
-  sudo rm -rf elementary*
-  sudo rm -rf emotion*
-  sudo rm -rf enlightenment*
-  sudo rm -rf ethumb*
-  sudo rm -rf evas*
-  sudo rm -rf libecore*
-  sudo rm -rf libector*
-  sudo rm -rf libedje*
-  sudo rm -rf libeet*
-  sudo rm -rf libeeze*
-  sudo rm -rf libefl*
-  sudo rm -rf libefreet*
-  sudo rm -rf libeina*
-  sudo rm -rf libeio*
-  sudo rm -rf libeldbus*
-  sudo rm -rf libelementary*
-  sudo rm -rf libelocation*
-  sudo rm -rf libelput*
-  sudo rm -rf libelua*
-  sudo rm -rf libembryo*
-  sudo rm -rf libemile*
-  sudo rm -rf libemotion*
-  sudo rm -rf libenventor*
-  sudo rm -rf libeo*
-  sudo rm -rf libeolian*
-  sudo rm -rf libephysics*
-  sudo rm -rf libethumb*
-  sudo rm -rf libevas*
-
-  cd /usr/local/lib/cmake &>/dev/null
-  sudo rm -rf ddcutil* &>/dev/null
+  cd /usr/local/lib/cmake
+  sudo rm -rf ddcutil
 
   cd /usr/local/lib/x86_64-linux-gnu
   sudo rm -rf ecore*
   sudo rm -rf edje*
   sudo rm -rf eeze*
-  sudo rm -rf efl*
   sudo rm -rf efreet*
   sudo rm -rf elementary*
   sudo rm -rf emotion*
@@ -174,30 +91,9 @@ uninstall_e26() {
   sudo rm -rf ephoto*
   sudo rm -rf ethumb*
   sudo rm -rf evas*
-  sudo rm -rf libecore*
-  sudo rm -rf libector*
-  sudo rm -rf libedje*
-  sudo rm -rf libeet*
-  sudo rm -rf libeeze*
-  sudo rm -rf libefl*
-  sudo rm -rf libefreet*
-  sudo rm -rf libeina*
-  sudo rm -rf libeio*
-  sudo rm -rf libeldbus*
-  sudo rm -rf libelementary*
-  sudo rm -rf libelocation*
-  sudo rm -rf libelput*
-  sudo rm -rf libelua*
-  sudo rm -rf libembryo*
-  sudo rm -rf libemile*
-  sudo rm -rf libemotion*
-  sudo rm -rf libeo*
-  sudo rm -rf libeolian*
-  sudo rm -rf libethumb*
-  sudo rm -rf libevas*
-  sudo rm -rf libexactness*
-  sudo rm -rf librlottie*
   sudo rm -rf rage*
+  sudo rm -rf libecore*
+  sudo rm -rf libefl*
 
   cd /usr/local/lib/x86_64-linux-gnu/cmake
   sudo rm -rf Ecore*
@@ -215,55 +111,21 @@ uninstall_e26() {
   sudo rm -rf Emotion*
   sudo rm -rf Eo*
   sudo rm -rf Eolian*
-  sudo rm -rf Emile*
   sudo rm -rf Ethumb*
   sudo rm -rf Evas*
 
   cd /usr/local/lib/x86_64-linux-gnu/pkgconfig
   sudo rm -rf ecore*
-  sudo rm -rf ector*
-  sudo rm -rf edje*
-  sudo rm -rf eet*
-  sudo rm -rf eeze*
   sudo rm -rf efl*
-  sudo rm -rf efreet*
-  sudo rm -rf eina*
-  sudo rm -rf eio*
-  sudo rm -rf eldbus*
-  sudo rm -rf elementary*
-  sudo rm -rf elocation*
-  sudo rm -rf elua*
-  sudo rm -rf embryo*
-  sudo rm -rf emile*
-  sudo rm -rf emotion*
-  sudo rm -rf enlightenment*
-  sudo rm -rf enventor*
-  sudo rm -rf evisum*
-  sudo rm -rf eo*
-  sudo rm -rf eolian*
-  sudo rm -rf ephoto*
-  sudo rm -rf ethumb*
-  sudo rm -rf evas*
-  sudo rm -rf everything*
-  sudo rm -rf exactness*
-  sudo rm -rf express*
-  sudo rm -rf rage*
   sudo rm -rf rlottie*
-  sudo rm -rf terminology*
-
-  cd /usr/local/man/man1
-  sudo rm -rf terminology*
-  sudo rm -rf ty*
 
   cd /usr/local/share
-  sudo rm -rf dbus*
   sudo rm -rf ddcutil*
   sudo rm -rf ecore*
   sudo rm -rf ecrire*
   sudo rm -rf edi*
   sudo rm -rf edje*
   sudo rm -rf eeze*
-  sudo rm -rf efl*
   sudo rm -rf eflete*
   sudo rm -rf efreet*
   sudo rm -rf elementary*
@@ -286,11 +148,11 @@ uninstall_e26() {
   sudo rm -rf wayland-sessions*
 
   cd /usr/local/share/applications
-  sudo sed -i '/enlightenment_filemanager/d' mimeinfo.cache &>/dev/null
-  sudo sed -i '/ecrire/d' mimeinfo.cache &>/dev/null
-  sudo sed -i '/entice/d' mimeinfo.cache &>/dev/null
-  sudo sed -i '/ephoto/d' mimeinfo.cache &>/dev/null
-  sudo sed -i '/rage/d' mimeinfo.cache &>/dev/null
+  sudo sed -i '/enlightenment_filemanager/d' mimeinfo.cache
+  sudo sed -i '/ecrire/d' mimeinfo.cache
+  sudo sed -i '/entice/d' mimeinfo.cache
+  sudo sed -i '/ephoto/d' mimeinfo.cache
+  sudo sed -i '/rage/d' mimeinfo.cache
   sudo rm -rf enlightenment_paledit.desktop
   sudo rm -rf terminology.desktop
 
@@ -302,12 +164,6 @@ uninstall_e26() {
 
   cd /usr/local/share/icons
   sudo rm -rf Enlightenment*
-  sudo rm -rf elementary*
-  sudo rm -rf terminology*
-
-  cd /usr/local/share/icons/hicolor/128x128/apps
-  sudo rm -rf evisum.png
-  sudo rm -rf terminology.png
 
   cd /usr/local/share/info
   sudo rm -rf edi
@@ -315,8 +171,8 @@ uninstall_e26() {
   cd /usr/share/dbus-1/services
   sudo rm -rf org.enlightenment.Ethumb.service
 
-  cd /usr/share/wayland-sessions &>/dev/null
-  sudo rm -rf enlightenment.desktop &>/dev/null
+  cd /usr/share/wayland-sessions
+  sudo rm -rf enlightenment.desktop
 
   cd /usr/share/xsessions
   sudo rm -rf enlightenment.desktop
@@ -342,8 +198,10 @@ uninstall_e26() {
   rm -rf .config/express
   rm -rf .config/rage
   rm -rf .config/terminology
-  rm -rf .local/bin/esteem.sh
+  rm -rf .local/bin/elucidate.sh
+}
 
+final_stp() {
   if [ -f $HOME/.bash_aliases ]; then
     read -t 12 -p "Remove the .bash_aliases file? [Y/n] " answer
     case $answer in
@@ -363,19 +221,54 @@ uninstall_e26() {
     esac
   fi
 
+  sudo rm -rf /usr/lib/systemd/user/enlightenment.service
+  sudo rm -rf /usr/lib/systemd/user/ethumb.service
+  sudo rm -rf /usr/lib/libintl.so
+  sudo systemctl daemon-reload
+  sudo ldconfig
+
+  # Remove the translation files too.
   find /usr/local/share/locale/*/LC_MESSAGES 2>/dev/null | while read -r I; do
     echo "$I" |
       xargs sudo rm -rf \
         $(grep -E 'efl|enlightenment|ephoto|evisum|terminology|ecrire|edi|enventor|eflete|forecasts')
   done
+}
 
-  sudo rm -rf /usr/lib/systemd/user/enlightenment.service
-  sudo rm -rf /usr/lib/systemd/user/ethumb.service
-  sudo systemctl daemon-reload
+uninstall_e26() {
+  if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
+    printf "$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
+    beep_exit
+    exit 1
+  fi
 
-  sudo rm -rf /usr/lib/libintl.so
-  sudo ldconfig
-  # Candidates for further deletion: Search for “meetse”, “ebackups” and “pbackups” in your home folder.
+  if [ -x /usr/bin/wmctrl ]; then
+    if [ "$XDG_SESSION_TYPE" == "x11" ]; then
+      wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
+    fi
+  fi
+
+  ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+
+  clear
+  printf "\n\n$BDR%s %s\n\n" "* UNINSTALLING ENLIGHTENMENT DESKTOP ENVIRONMENT *"
+  sleep 1
+  printf "$BDR%s %s\n\n" "This may take a few minutes."
+  sleep 1
+  printf "$BDR%s $OFF%s\n\n" "You will be prompted to answer some basic questions..."
+  sleep 2
+
+  cd $HOME
+
+  for I in $PROG_MN; do
+    cd $ESRC/e26/$I
+    sudo ninja -C build uninstall
+    echo
+  done
+
+  remov_rcmd
+  del_list
+  final_stp
 }
 
 # Calls the main function.
