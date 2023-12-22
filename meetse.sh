@@ -41,7 +41,7 @@ remov_rcmd() {
   case $answer in
   y | Y)
     cd $ESRC/rlottie
-    sudo ninja -C build uninstall &>/dev/null
+    sudo ninja -C build uninstall
     cd .. && rm -rf rlottie
     echo
     ;;
@@ -51,7 +51,7 @@ remov_rcmd() {
   *)
     cd $ESRC/rlottie
     echo
-    sudo ninja -C build uninstall &>/dev/null
+    sudo ninja -C build uninstall
     cd .. && rm -rf rlottie
     echo
     ;;
