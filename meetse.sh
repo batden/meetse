@@ -232,7 +232,17 @@ final_stp() {
   find /usr/local/share/locale/*/LC_MESSAGES 2>/dev/null | while read -r I; do
     echo "$I" |
       xargs sudo rm -rf \
-        $(grep -E 'efl|enlightenment|ephoto|evisum|terminology|ecrire|edi|enventor|eflete|forecasts|penguins')
+        $(grep -E 'efl|
+        enlightenment|
+        ephoto|
+        evisum|
+        terminology|
+        ecrire|
+        edi|
+        enventor|
+        eflete|
+        forecasts|
+        penguins')
   done
 }
 
