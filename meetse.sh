@@ -80,9 +80,6 @@ del_list() {
   sudo rm -rf enlightenment
   sudo rm -rf express-0
 
-  cd /usr/local/lib/cmake
-  sudo rm -rf ddcutil
-
   cd /usr/local/lib/x86_64-linux-gnu
   sudo rm -rf ecore*
   sudo rm -rf edje*
@@ -141,7 +138,6 @@ del_list() {
   sudo rm -rf efl*
 
   cd /usr/local/share
-  sudo rm -rf ddcutil*
   sudo rm -rf ecore*
   sudo rm -rf ecrire*
   sudo rm -rf edi*
