@@ -44,6 +44,7 @@ remov_rcmd() {
     cd $ESRC/rlottie
     sudo ninja -C build uninstall
     cd .. && rm -rf rlottie
+    sudo rm -rf /usr/local/lib/x86_64-linux-gnu/pkgconfig/rlottie.pc
     echo
     ;;
   n | N)
@@ -54,6 +55,7 @@ remov_rcmd() {
     echo
     sudo ninja -C build uninstall
     cd .. && rm -rf rlottie
+    sudo rm -rf /usr/local/lib/x86_64-linux-gnu/pkgconfig/rlottie.pc
     echo
     ;;
   esac
