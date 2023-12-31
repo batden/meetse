@@ -286,7 +286,7 @@ uninstall_e26() {
   final_stp
 }
 
-# Calls the main function.
+# Call the main function.
 lo() {
   trap '{ printf "\n$BDR%s $OFF%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' INT
 
