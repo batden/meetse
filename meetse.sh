@@ -294,8 +294,9 @@ lo() {
 
   printf "\n\n$BDR%s $OFF%s\n\n" "All done."
   # Candidates for further deletion: Search for “meetse” and “ebackups” in your home folder.
-  # Note that the binary dependencies (dev packages) are kept for system consistency. There is no safe
-  # way to remove them automatically, without close supervision by the user.
+  # Note that the binary dependencies (dev packages) are kept for system consistency.
+  # There is no safe way to remove them automatically, without close supervision
+  # by the user.
 }
 
 lo
