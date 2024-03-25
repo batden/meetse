@@ -28,6 +28,7 @@ edi
 entice
 enlightenment-module-forecasts
 enlightenment-module-penguins
+enlightenment-module-places
 eflete
 efl"
 
